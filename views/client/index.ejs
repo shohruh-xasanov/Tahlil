@@ -24,7 +24,7 @@
                                             class="clock__time"><%= lastnews[0].createdAt.toTimeString().replace(/:\d+ /, ' ').split(" ")[0]%></span>
                                     </div>
                                 </div>
-                                <p class="about__title"><a href="href=/news/name/<%= lastnews[0].search%>"> <%= lastnews[0].name.uz%> </a></p>
+                                <p class="about__title"><a href="/news/name/<%= lastnews[0].search%>"> <%= lastnews[0].name.uz%> </a></p>
                             </div>
                         </div>
                         <% }%>
@@ -33,8 +33,8 @@
                                 <%if(lastnews[i]) {%>
                             <div class="intro__col">
                                 <a class="col__body" href="/news/name/<%= lastnews[i].search%>">
-                                    <div class="col__photos">
-                                        <img class="col__photo" src="<%= lastnews[i].poster.org%>" alt="col__img">
+                                    <div class="col__photos" style="width: 198; height: 319;">
+                                        <img  class="col__photo" src="<%= lastnews[i].poster.org%>" alt="col__img">
                                     </div>
                                     <div class="col__content">
                                         <div class="data__content">
@@ -293,50 +293,52 @@
             </div> <!-- container end -->
         </section> <!-- video end-->
 
-
         <section class="street">
             <div class="container">
-
                 <div class="street__heading">
-                    <a class="street__title side__title" ><%= newsCat1[0].categoryID.name.uz%></a>
+                    <h4 class="street__title side__title"><%= newsCat1[0].categoryID.name.uz%></h4>
                     <a class="video__all" href="/news/category/<%= newsCat1[0].categoryID.search%>">Барчаси</a>
                 </div>
-                    <div class="sport__parents">
-                        <%if(newsCat1) {%>
-                            <% for(item of newsCat1) {%>
-                            <div class="sport__box">
-                                <a class="box__link" href="/news/name/<%= item.search%>">
-                                    <div class="col__photos">
-                                        <img class="box__photo" src="<%=item.poster.org%>" alt="photo__sport">
-                                    </div>
-                                    <div class="box__bottom_content">
-                                        <div class="box__bottom_content">
-                                            <div class="data__content">
-                                                <%if(item.categoryID){%>
-                                                <span class="prevtext"><%= item.categoryID.name.uz%></span>
-                                                <% }%>
-                                                <div class="bottom__time_data">
-                                                    <span class="intro__time"><%= moment(item.createdAt).format("DD.MM.YYYY") %></span> <span
-                                                        class="clock__time"><%= item.createdAt.toTimeString().replace(/:\d+ /, ' ').split(" ")[0]%></span>
-                                                </div>
-                                            </div>
-                                            <p class="photo__bottom_text text"><%= item.name.uz%></p>
-                                        </div>
-        
-                                    </div>
-                                </a>
+                
+                <div class="street__inner">
+                    
+                 <div class="street__items">
+                    <%if(newsCat1) {%>
+                    <% for(item of newsCat1) {%>
+                    <div class="street__item">
+                        <a class="box__link" href="/news/name/<%= item.search%>">
+                            <div class="col__photos">
+                                <img class="box__photo" src="<%=item.poster.org%>" alt="photo__sport">
                             </div>
-                            <% }%>
-                            <% }%>
+                            <div class="box__bottom_content">
+                                <div class="box__bottom_content">
+                                    <div class="data__content">
+                                        <%if(item.categoryID){%>
+                                        <span class="prevtext"><%= item.categoryID.name.uz%></span>
+                                        <% }%>
+                                        <div class="bottom__time_data">
+                                            <span class="intro__time"><%= moment(item.createdAt).format("DD.MM.YYYY") %></span> <span
+                                                class="clock__time"><%= item.createdAt.toTimeString().replace(/:\d+ /, ' ').split(" ")[0]%></span>
+                                        </div>
+                                    </div>
+                                    <p class="photo__bottom_text text"><%= item.name.uz%></p>
+                                </div>
+
+                            </div>
+                        </a>
                     </div>
-                </div> 
-                <!-- street__inner  -->
-            </div> 
-            <!-- container -->
-        </section>
-        <!-- street end -->
+                    <% }%>
+                    <% }%>
+                  
+                </div><!-- sport parents -->
+                <div class="right__content">
+                    <img class="right__photo" src="http://placehold.it/319x638" alt="right__photo">
+                </div>
+                </div>
+            </div><!-- container -->
+        </section> <!-- sport end -->
 
-
+        
         <section class="sport space">
             <div class="container">
                 <div class="sport__head">

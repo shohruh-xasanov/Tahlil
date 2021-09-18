@@ -9,7 +9,7 @@ const getMain = {
     let twoday = new Date()
     twoday.setDate(twoday.getDate()-2)
     const seen = await News.find({ 
-      ["name.uz"]: { $gte: 0 },
+      ["name.ru"]: { $gte: 0 },
       createdAt:{$gte: twoday} })
       .limit(5)
       .sort({ seen: -1 });
@@ -17,7 +17,7 @@ const getMain = {
       .limit(4)
       .sort({ createdAt: -1 })
       .populate("categoryID");
-    const actual = await News.find({['name.ru']:{$gte:0}})
+    const actual = await News.find({['name.ru']:{$gte:0}}).and({actual:true})
       .limit(6)
       .sort({ createdAt: -1 })
       .populate("categoryID");
@@ -30,11 +30,11 @@ const getMain = {
       .limit(3)
       .sort({ createdAt: 1 })
       .populate("categoryID");
-    const category = await Category.find().sort({ createdAt: -1 }).limit(7);
+    const category = await Category.find({['name.ru']:{$gte:0}}).limit(7);
     const links = await Links.find().limit(1).sort({ createdAt: -1 });
     const id1 = category[0]._id
     const id2 = category[1]._id
-    const newsCat1 = await News.find({categoryID: id1}).and({ ["name.ru"]: { $gte: 0 } }).sort({createdAt:-1}).limit(8).populate('categoryID')
+    const newsCat1 = await News.find({categoryID: id1}).and({ ["name.ru"]: { $gte: 0 } }).sort({createdAt:-1}).limit(6).populate('categoryID')
     const newsCat2 = await News.find({categoryID: id2}).and({ ["name.ru"]: { $gte: 0 } }).sort({createdAt:-1}).limit(8).populate('categoryID')
     res.render("clientru/index", {
       layout: "./client_layoutru",

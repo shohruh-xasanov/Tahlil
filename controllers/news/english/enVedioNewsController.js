@@ -68,7 +68,7 @@ const getVedioNews = {
         const menu = await Menu.find()
             .limit(1)
             .sort({createdAt:-1})
-        const category = await Category.find()
+        const category = await Category.find({['name.eng']:{$gte:0}})
         const user = req.session.admin
         res.render('admin/vedio_news_eng/createNews', {
             layout:'admin_layout', menu, category,user

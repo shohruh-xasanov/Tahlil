@@ -17,7 +17,7 @@ const getMain = {
       .sort({ createdAt: -1 })
       .limit(4)
       .populate("categoryID");
-    const actual = await News.find({ ["name.uz"]: { $gte: 0 } })
+    const actual = await News.find({ ["name.uz"]: { $gte: 0 } }).and({actual:true})
       .sort({ createdAt: -1 })
       .limit(6)
       .populate("categoryID");
@@ -30,13 +30,14 @@ const getMain = {
       .sort({ createdAt: 1 })
       .limit(3)
       .populate("categoryID");
-    const category = await Category.find().limit(7);
+    const category = await Category.find({['name.uz']:{$gte:0}}).limit(7);
     const links = await Links.find().limit(1).sort({ createdAt: -1 });
     const id1 = category[0]._id
     const id2 = category[1]._id
-    const newsCat1 = await News.find({categoryID: id1}).and({ ["name.uz"]: { $gte: 0 } }).sort({createdAt:-1}).limit(8).populate('categoryID')
+    const newsCat1 = await News.find({categoryID: id1}).and({ ["name.uz"]: { $gte: 0 } }).sort({createdAt:-1}).limit(6).populate('categoryID')
     const newsCat2 = await News.find({categoryID: id2}).and({ ["name.uz"]: { $gte: 0 } }).sort({createdAt:-1}).limit(8).populate('categoryID')
     res.render("client/index", {
+      title:'Tahlil24.uz интернет нашри',
       layout: "./client_layout",
       seen,
       lastnews,
@@ -53,12 +54,14 @@ const getMain = {
   getReclame : async (req,res)=> {
     const links = await Links.find().limit(1).sort({createdAt:-1})
     res.render('client/reclame', {
+      title:'Реклама',
       layout:'./client_layout', links
     })
   },
   getContact : async (req,res)=>{
     const links = await Links.find().limit(1).sort({createdAt:-1})
     res.render('client/contact', {
+      title: 'Алоқа',
       layout:'./client_layout', links
     })
   },
@@ -66,6 +69,7 @@ const getMain = {
     const links = await Links.find().limit(1).sort({createdAt:-1})
     const about = await About.find().limit(1).sort({createdAt:-1})
     res.render('client/about', {
+      title:'Сайт ҳақида',
       layout:'./client_layout', links, about
     }) 
   },

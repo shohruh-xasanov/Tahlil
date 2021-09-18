@@ -27,34 +27,27 @@ const getCategory = {
             if(uz.length>1&&ru.length>1&&eng.length<1){
                  category = new Category({name:{uz, ru},search,searchru})
                  await category.save()
-                 console.log('2')
             }
             if(uz.length<1&&ru.length>1&&eng.length>1){
                  category = new Category({name:{eng, ru},searchru,searchen})
                  await category.save()
-                 console.log('3')
             }
             if(uz.length>1&&ru.length<1&&eng.length>1){
                  category = new Category({name:{uz, eng},search,searchen})
                  await category.save()
-                 console.log('4')
             }
             if(uz.length>1&&ru.length<1&&eng.length<1){
                  category = new Category({name:{uz},search})
                  await category.save()
-                 console.log('5')
             }
             if(uz.length<1&&ru.length>1&&eng.length<1){
                  category = new Category({name:{ru},searchru})
                  await category.save()
-                 console.log('6')
             }
             if(uz.length<1&&ru.length<1&&eng.length>1){
                  category = new Category({name:{eng},searchen})
                  await category.save()
-                 console.log('7')
             }
-            console.log(category)
             res.redirect('/category')
         } catch (error) {
             // res.redirect('/category')

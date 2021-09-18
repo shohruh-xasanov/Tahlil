@@ -69,7 +69,7 @@ const getVedioNews = {
     createNewsPageRu : async (req,res)=>{
         const menu = await Menu.find().limit(1).sort({createdAt:-1})
         const user = req.session.admin
-        const category = await Category.find()
+        const category = await Category.find({['name.ru']:{$gte:0}})
         res.render('admin/vedio_news_ru/createNews', {
             layout:'admin_layout', menu, category, user
         })

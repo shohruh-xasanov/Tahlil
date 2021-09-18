@@ -70,7 +70,7 @@ const getNewsRu = {
         const menu = await Menu.find()
             .limit(1)
             .sort({createdAt:-1})
-        const category = await Category.find()
+        const category = await Category.find({['name.ru']:{$gte:0}})
         const user = req.session.admin
         res.render('admin/news_ru/createNews', {
             layout:'admin_layout', menu, category,user

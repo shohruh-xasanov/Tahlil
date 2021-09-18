@@ -48,7 +48,7 @@
                                             class="clock__time"><%= news[0].createdAt.toTimeString().replace(/:\d+ /, ' ').split(" ")[0]%></span>
                                     </div>
                                 </div>
-                                <p class="about__title"><%= news[0].name.ru%></p>
+                                <p class="about__title"><a href="/ru/news/name/<%= news[0].search%>"> <%= news[0].name.ru%></a></p>
 
                             </div>
                         </div>
@@ -106,10 +106,12 @@
                                     </div>
                                 </nav>
                                 </div>
+                                <% if(news.length>11) {%>
                                 <div class="center__all">
                                     <button id="navToggle" class="center__all_link">Кўпроқ юклаш</button>
                                    
                                 </div>
+                                <% }%>
 
                         </div> <!-- intro__bottom -->
                     </div> <!-- intro__item -->

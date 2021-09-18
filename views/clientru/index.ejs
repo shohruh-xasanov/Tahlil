@@ -26,7 +26,7 @@
                                             class="clock__time"><%= lastnews[0].createdAt.toTimeString().replace(/:\d+ /, ' ').split(" ")[0]%></span>
                                     </div>
                                 </div>
-                                <p class="about__title"><%= lastnews[0].name.ru%> </p>
+                                <p class="about__title"><a href="/ru/news/name/<%= lastnews[0].search%>"> <%= lastnews[0].name.ru%></a> </p>
                             </div>
                         </div>
                         <% }%>
@@ -297,47 +297,49 @@
         </section> <!-- video end-->
         <section class="street">
             <div class="container">
-
                 <div class="street__heading">
-                    <% if(newsCat1[0]){%>
-                    <a class="street__title side__title" ><%= newsCat1[0].categoryID.name.ru%></a>
-                    <a class="video__all" href="/news/category/<%= newsCat1[0].categoryID.searchru%>">Барчаси</a>
-                    <% }%>
+                    <h4 class="street__title side__title"><%= newsCat1[0].categoryID.name.ru%></h4>
+                    <a class="video__all" href="/ru/news/category/<%= newsCat1[0].categoryID.search%>">Барчаси</a>
                 </div>
-                    <div class="sport__parents">
-                        <%if(newsCat1) {%>
-                            <% for(item of newsCat1) {%>
-                            <div class="sport__box">
-                                <a class="box__link" href="/news/name/<%= item.search%>">
-                                    <div class="col__photos">
-                                        <img class="box__photo" src="<%=item.poster.org%>" alt="photo__sport">
-                                    </div>
-                                    <div class="box__bottom_content">
-                                        <div class="box__bottom_content">
-                                            <div class="data__content">
-                                                <%if(item.categoryID){%>
-                                                <span class="prevtext"><%= item.categoryID.name.ru%></span>
-                                                <% }%>
-                                                <div class="bottom__time_data">
-                                                    <span class="intro__time"><%= moment(item.createdAt).format("DD.MM.YYYY") %></span> <span
-                                                        class="clock__time"><%= item.createdAt.toTimeString().replace(/:\d+ /, ' ').split(" ")[0]%></span>
-                                                </div>
-                                            </div>
-                                            <p class="photo__bottom_text text"><%= item.name.ru%></p>
-                                        </div>
-        
-                                    </div>
-                                </a>
+                
+                <div class="street__inner">
+                    
+                 <div class="street__items">
+                    <%if(newsCat1) {%>
+                    <% for(item of newsCat1) {%>
+                    <div class="street__item">
+                        <a class="box__link" href="/ru/news/name/<%= item.search%>">
+                            <div class="col__photos">
+                                <img class="box__photo" src="<%=item.poster.org%>" alt="photo__sport">
                             </div>
-                            <% }%>
-                            <% }%>
+                            <div class="box__bottom_content">
+                                <div class="box__bottom_content">
+                                    <div class="data__content">
+                                        <%if(item.categoryID){%>
+                                        <span class="prevtext"><%= item.categoryID.name.ru%></span>
+                                        <% }%>
+                                        <div class="bottom__time_data">
+                                            <span class="intro__time"><%= moment(item.createdAt).format("DD.MM.YYYY") %></span> <span
+                                                class="clock__time"><%= item.createdAt.toTimeString().replace(/:\d+ /, ' ').split(" ")[0]%></span>
+                                        </div>
+                                    </div>
+                                    <p class="photo__bottom_text text"><%= item.name.ru%></p>
+                                </div>
+
+                            </div>
+                        </a>
                     </div>
-                </div> 
-                <!-- street__inner  -->
-            </div> 
-            <!-- container -->
-        </section>
-        <!-- street end -->
+                    <% }%>
+                    <% }%>
+                  
+                </div><!-- sport parents -->
+                <div class="right__content">
+                    <img class="right__photo" src="http://placehold.it/319x638" alt="right__photo">
+                </div>
+                </div>
+            </div><!-- container -->
+        </section> <!-- sport end -->
+
 
 
         <section class="sport space">
@@ -346,14 +348,14 @@
                     <%if(newsCat2[0]){%>
                     <h4 class="sport__title side__title"><%= newsCat2[0].categoryID.name.ru%></h4>
                     <% }%>
-                    <a class="video__all" href="/news/category/<%= newsCat20].categoryID.searchru%>">Барчаси</a>
+                    <a class="video__all" href="/ru/news/category/<%= newsCat2[0].categoryID.searchru%>">Барчаси</a>
                 </div>
 
                  <div class="sport__parents">
                     <%if(newsCat2) {%>
                     <% for(item of newsCat2) {%>
                     <div class="sport__box">
-                        <a class="box__link" href="/news/name/<%= item.search%>">
+                        <a class="box__link" href="/ru/news/name/<%= item.search%>">
                             <div class="col__photos">
                                 <img class="box__photo" src="<%=item.poster.org%>" alt="photo__sport">
                             </div>

@@ -25,6 +25,7 @@ exports.searchNewsclient = async(req,res)=>{
     ]).populate('categoryID').limit(9)
     const lastNews = await News.find({['name.uz']:{$gte:0}}).limit(5).sort({createdAt:-1})
     res.render("client/searchnews", {
+        title:search,
         layout: "./client_layout", news, lastNews, search,links
     });
 }
@@ -33,7 +34,7 @@ exports.searchNewsclienten = async(req,res)=>{
     let search = req.query.search
     const links = await Links.find().limit(1)
     const  news = await News.find().or([
-        {['name.en']:{ $regex: searchExpression_name, $options: 'i'}}
+        {['name.eng']:{ $regex: searchExpression_name, $options: 'i'}}
     ]).populate('categoryID').limit(9)
     const lastNews = await News.find({['name.eng']:{$gte:0}}).limit(5).sort({createdAt:-1})
     res.render("clienten/searchnews", {

@@ -161,7 +161,9 @@
                                     <option value="<%= result.categoryID._id %>"><%= result.categoryID.name.uz %></option>
                                     <% }%>
                                 <% for (let item of category) {%>
+                                  <% if(item.name.uz) {%>
                                     <option value="<%= item._id %>"><%= item.name.uz %></option>
+                                    <% }%>
                                     <% } %>
                                 </select>
                             </div>
@@ -446,7 +448,9 @@
                                     <option value="<%= result.categoryID._id %>"><%= result.categoryID.name.ru %></option>
                                     <% }%>
                                 <% for (let item of category) {%>
+                                  <% if(item.name.ru) {%>
                                     <option value="<%= item._id %>"><%= item.name.ru %></option>
+                                    <% }%>
                                     <% } %>
                                 </select>
                             </div>
@@ -731,7 +735,9 @@
                                     <option value="<%= result.categoryID._id %>"><%= result.categoryID.name.eng %></option>
                                     <% }%>
                                 <% for (let item of category) {%>
+                                  <% if(item.name.eng) {%>
                                     <option value="<%= item._id %>"><%= item.name.eng %></option>
+                                    <% }%>
                                     <% } %>
                                 </select>
                             </div>
