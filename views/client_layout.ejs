@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="uz">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="/css/swiper-min.css" />
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/media.css">
+    <link rel="stylesheet" href="/css/all.min.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+    <link rel="manifest" href="/favicon/site.webmanifest">
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript" >
+   (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+   m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+   (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+   ym(85137769, "init", {
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true,
+        webvisor:true
+   });
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/85137769" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+  
+        
+    <title>main</title>
+</head>
+<% var category%>
+<% var links%>
+<body>
+    <div class="main">
+        <div class="web__back">
+            <div class="container">
+                <div class="main__inner">
+                    <div class="about__website">
+                        <a class="main__link" href="/about/tahlil/24" target="_blank">Сайт ҳақида</a>
+                        <a class="main__link" href="/contact/tahlil/24" target="_blank">Алоқа</a>
+                        <a class="main__link" href="/reclame/tahlil/24" target="_blank">Реклама</a>
+                    </div>
+                    <% if(links) {%>
+                    <div class="social__link">
+                        <a class="social__icon" href="<%= links[0].tg%>" target="_blank">
+                            <img src="/images/social__icon/menu1.svg" alt="telegram_icon">
+                        </a>
+                        <a class="social__icon" href="<%= links[0].insta%>" target="_blank">
+                            <img src="/images/social__icon/menu2.svg" alt="instagram-head">
+                        </a>
+                        <a class="social__icon" href="<%= links[0].tw%>" target="_blank">
+                            <img src="/images/social__icon/menu3.svg" alt="instagram-head">
+                        </a>
+                        <a class="social__icon" href="<%= links[0].fb%>" target="_blank">
+                            <img src="/images/social__icon/menu4.svg" alt="instagram-head">
+                        </a>
+                    </div>
+                    <% }%>
+                </div>
+            </div><!-- container -->
+        </div> <!-- web__back -->
+
+        <header class="header">
+            <div class="container">
+                <div class="header__inner">
+
+
+                    <div class="header__burger">
+                        <span></span>
+                    </div>
+
+
+
+                    <a class="header__logo" href="/">
+                        <img src="/images/header/logo.png" alt="logo__header">
+                    </a>
+
+
+                    <nav class="menu">
+                        <ul class="menu__list">
+                            <li class="lang__btn">
+                                <button class="lang active" type="button"><a href="/uz/changelang">Ўз</a> </button>
+                                <button class="lang" type="button"><a href="/ru/changelang">Ру</a> </button>
+                                <button class="lang" type="button"><a href="/en/changelang">En</a> </button>
+                            </li>
+                            <%if(category) {%>
+                                <%for(item of category){%>
+                            <li class="menu__item"><a class="menu__link" href="/news/category/<%= item.search%>"><%= item.name.uz%></a></li>
+                            <% }%>
+                            <% }%>
+                        </ul>
+                        <div class="social__body">
+
+                            <% if(links) {%>
+                    <div class="social__link">
+                        <a class="social__icon" href="<%= links[0].tg%>" target="_blank">
+                            <img src="/images/social__icon/menu1.svg" alt="telegram_icon">
+                        </a>
+                        <a class="social__icon" href="<%= links[0].insta%>" target="_blank">
+                            <img src="/images/social__icon/menu2.svg" alt="instagram-head">
+                        </a>
+                        <a class="social__icon" href="<%= links[0].tw%>" target="_blank">
+                            <img src="/images/social__icon/menu3.svg" alt="instagram-head">
+                        </a>
+                        <a class="social__icon" href="<%= links[0].fb%>" target="_blank">
+                            <img src="/images/social__icon/menu4.svg" alt="instagram-head">
+                        </a>
+                    </div>
+                    <% }%>
+
+                            <div class="about__infos">
+                                <a class="main__link space__info" href="/about/tahlil/24" target="_blank">Сайт ҳақида</a>
+                                <a class="main__link space__info" href="/contact/tahlil/24" target="_blank">Алоқа</a>
+                                <a class="main__link space__info" href="/reclame/tahlil/24" target="_blank">Реклама</a>
+                            </div>
+                        </div>
+                    </nav>
+
+
+                    <form action="/news/search" class="search">
+                        <input class="search-txt" type="text" name="search" placeholder="Type to Search...">
+                        <button type="submit" class="search-btn">
+                            <i></i>
+                        </button>
+                        <span class="search-btn search-btn-toggle"></span>
+                        <span class="search-btn search-btn-close"></span>
+                    </form>
+
+                     <div class="dropwdown menu__item--lang">
+
+                        <div class="dropdown">
+                            <button class="dropbtn">Uzbekcha</button>
+                            <div class="dropdown-content">
+                              <a href="/uz/changelang">Uzbekcha</a>
+                              <a href="/ru/changelang">Русский</a>
+                              <a href="/en/changelang">English</a>
+                            </div>
+                          </div>                    
+                        </div>
+                </div>
+            </div><!-- container -->
+        </header> <!-- header end -->
+                        <%- body%>
+                        
+        <footer class="footer space">
+            <div class="container">
+                <div class="footer__all">
+                    <div class="footer__inner">
+                        <a class="footer__logo" href="#">
+                            <img class="footer__logos" src="/images/header/footer.logo.png" alt="footer__logo">
+                        </a>
+                        <div class="footer__website">
+                            <a class="main__link" href="#" target="_blank">Сайт ҳақида</a>
+                            <a class="main__link" href="#" target="_blank">Алоқа</a>
+                            <a class="main__link" href="#" target="_blank">Реклама</a>
+                        </div>
+                    </div> <!-- footer__inner -->
+                    <div class="about__info">
+                        <span class="copyright">Барча хуқуқлар ҳимояланган © 2021</span>
+                        <span class="info__copyright">Сайт материалларидан тўлиқ ёки қисман фойдаланилганда веб-сайт
+                            манзили
+                            кўрсатилиши шарт.​ Веб-сайт ОАВ сифатида 2018 йил
+                            26 октябрь куни Ўзбекистон Республикаси Президенти Администрацияси ҳузуридаги Ахборот ва
+                            оммавий
+                            коммуникациялар
+                            агентлигида 1089 рақам билан рўйхатга олинган. Расмий хабарларда ва блогларда кетган
+                            маълумот -
+                            мақолаларга муаллифлар
+                            ва блогерларнинг ўзлари масъулдирлар.</span>
+                        <div class="adress">Таҳририят манзили: Фарғона вилояти, Қўштепа тумани, Каттакўл МФЙ, Каттакўл
+                            кўчаси, 123-уй.
+                            <span class="electron">Электрон манзил: <a class="span__link"
+                                    href="#">info@tahlil24.uz</a></span>
+                        </div>
+                    </div>
+                    <%if(links) {%>
+                    <div class="footer__social">
+                        <a class="footer__icon" href="<%= links[0].tg%>" target="_blank">
+                            <img src="/images/social__icon/menu1.svg" alt="telegram_icon">
+                        </a>
+                        <a class="footer__icon" href="<%= links[0].insta%>" target="_blank">
+                            <img src="/images/social__icon/menu2.svg" alt="instagram">
+                        </a>
+                        <a class="footer__icon" href="<%= links[0].tw%>" target="_blank">
+                            <img src="/images/social__icon/menu3.svg" alt="telegram">
+                        </a>
+                        <a class="footer__icon" href="<%= links[0].fb%>" target="_blank">
+                            <img src="/images/social__icon/menu4.svg" alt="twitter">
+                        </a>
+                    </div>
+                    <% }%>
+                    <div class="social__body_footer">
+                        <div class="social__icons">
+                            <a class="footer__socc" href="<%= links[0].tg%>" target="_blank">
+                                <img src="/images/social__icon/white-soc1.svg" alt="telegram_icon">
+                                <span class="telegram-footer">Telegram</span>
+                            </a>
+                            <a class="footer__socc" href="<%= links[0].insta%>" target="_blank">
+                                <img src="/images/social__icon/white-soc2.svg" alt="instagram">
+                                <span class="telegram-footer">Instagram</span>
+                            </a>
+                            <a class="footer__socc" href="<%= links[0].tw%>" target="_blank">
+                                <img src="/images/social__icon/white-soc3.svg" alt="telegram">
+                                <span class="telegram-footer">Twitter</span>
+                            </a>
+                            <a class="footer__socc" href="<%= links[0].fb%>" target="_blank">
+                                <img src="/images/social__icon/white-soc4.svg" alt="twitter">
+                                <span class="telegram-footer">Facebook</span>
+                            </a>
+                        </div>
+
+                        <div class="footer__infos">
+                            <a class="footer__web" href="/about/tahlil/24" target="_blank">Сайт ҳақида</a>
+                            <a class="footer__web" href="/contact/tahlil/24" target="_blank">Алоқа</a>
+                            <a class="footer__web" href="/reclame/tahlil/24" target="_blank">Реклама</a>
+                        </div>
+
+                    </div>
+                    <span class="footer__info_copy">Барча хуқуқлар ҳимояланган © 2021</span>
+                </div>
+            </div><!-- container -->
+        </footer>
+
+    </div> <!-- main -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+   <script src="/js/swiper-min.js"></script>
+    <script src="/js/app.js"></script>
+</body>
+
+</html>

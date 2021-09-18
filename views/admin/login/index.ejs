@@ -1,0 +1,41 @@
+<div class="accountbg"></div>
+    <% var data%>
+    <div class="wrapper-page">
+        <div class="card card-pages shadow-none">
+
+            <div class="card-body">
+                <%if(data) {%>
+                <p style="text-align: center; color: red;"><%= data%>!!!</p>
+                <% }%>
+                <h5 class="font-18 text-center">Tahli24</h5>
+
+                <form class="form-horizontal m-t-30" action="/api/auth/login" method="POST">
+
+                    <div class="form-group">
+                        <div class="col-12">
+                            <label>Login</label>
+                            <input class="form-control" minlength="7" name="login" type="text" required placeholder="Login">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-12">
+                            <label>Password</label>
+                            <input class="form-control" minlength="6" name="password" type="password" required  placeholder="Password">
+                        </div>
+                    </div>
+
+                   
+
+                    <div class="form-group text-center m-t-20">
+                        <div class="col-12">
+                            <button class="btn btn-primary btn-block btn-lg waves-effect waves-light" type="submit">Kirish</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+    <!-- END wrapper -->

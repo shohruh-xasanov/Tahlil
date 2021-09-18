@@ -1,0 +1,59 @@
+const mongoose = require('mongoose')
+
+const aboutSchema = new mongoose.Schema({
+    title:{
+      uz:{
+        type:String,
+        required:true,
+        trim:true
+      },
+      ru:{
+        type:String,
+        required:true,
+        trim:true
+      },
+      eng:{
+        type:String,
+        required:true,
+        trim:true
+      }
+    },
+    description:{
+        uz:{
+            type:String,
+            required:true,
+            trim:true
+        },
+        ru:{
+            type:String,
+            required:true,
+            trim:true
+        },
+        eng:{
+            type:String,
+            required:true,
+            trim:true
+        }
+    },
+    conditions:{
+        uz:{
+            type:String,
+            required:true,
+            trim:true
+        },
+        ru:{
+            type:String,
+            required:true,
+            trim:true
+        },
+        eng:{
+            type:String,
+            required:true,
+            trim:true
+        }
+    }
+},{
+    timestamps:true
+})
+
+module.exports = mongoose.model('About', aboutSchema)

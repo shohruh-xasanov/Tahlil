@@ -1,0 +1,224 @@
+<% var users%>
+<% var news%>
+<% var month%>
+<% var week%>
+<% var day%>
+<% var monthvisit%>
+<% var weekvisit%>
+<% var dayvisit%>
+<div class="page-title-box">
+    <div class="row align-items-center">
+        <div class="col-sm-6">
+            <h4 class="page-title">Dashboard</h4>
+        </div>
+        <div class="col-sm-6">
+            <ol class="breadcrumb float-right">
+                <li class="breadcrumb-item"><a href="javascript:void(0);">Stexo</a></li>
+                <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+        </div>
+    </div>
+    <!-- end row -->
+</div>
+<!-- end page-title -->
+<h4>Sayt Statistikasi :</h4>
+<div class="row" >
+
+    <div class="col-sm-6 col-xl-3">
+        <div class="card">
+            <div class="card-heading p-4">
+                <div class="mini-stat-icon float-right">
+                    <i class="mdi mdi-cube-outline bg-primary  text-white"></i>
+                </div>
+                <div>
+                    <h5 class="font-16">Yangiliklar soni </h5>
+                </div>
+                <h3 class="mt-4"><%= news%></h3>
+                <div class="progress mt-4" style="height: 4px;">
+                    <div class="progress-bar bg-primary" role="progressbar" style="width: 75%"
+                        aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <p class="text-muted mt-2 mb-0">Jami Yangiliklar<span class="float-right"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <div class="card">
+            <div class="card-heading p-4">
+                <div class="mini-stat-icon float-right">
+                    <i class="mdi mdi-cube-outline bg-primary  text-white"></i>
+                </div>
+                <div>
+                    <h5 class="font-16">Bir oyda</h5>
+                </div>
+                <h3 class="mt-4"><%= month%> </h3>
+                <div class="progress mt-4" style="height: 4px;">
+                    <div class="progress-bar bg-primary" role="progressbar" style="width: 75%"
+                        aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <p class="text-muted mt-2 mb-0">Qo'shildi <span class="float-right"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <div class="card">
+            <div class="card-heading p-4">
+                <div class="mini-stat-icon float-right">
+                    <i class="mdi mdi-cube-outline bg-primary  text-white"></i>
+                </div>
+                <div>
+                    <h5 class="font-16">Bir haftada</h5>
+                </div>
+                <h3 class="mt-4"><%=week%> </h3>
+                <div class="progress mt-4" style="height: 4px;">
+                    <div class="progress-bar bg-primary" role="progressbar" style="width: 75%"
+                        aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <p class="text-muted mt-2 mb-0">Qo'shildi<span class="float-right"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6 col-xl-3">
+        <div class="card">
+            <div class="card-heading p-4">
+                <div class="mini-stat-icon float-right">
+                    <i class="mdi mdi-cube-outline bg-primary  text-white"></i>
+                </div>
+                <div>
+                    <h5 class="font-16">Bir kunda</h5>
+                </div>
+                <h3 class="mt-4"><%= day%> </h3>
+                <div class="progress mt-4" style="height: 4px;">
+                    <div class="progress-bar bg-primary" role="progressbar" style="width: 75%"
+                        aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <p class="text-muted mt-2 mb-0">Qo'shildi<span class="float-right"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>
+<h4>Tashrif Buyuruvchilar</h4>
+<div class="row">
+
+    <div class="col-sm-6 col-xl-3">
+        <div class="card">
+            <div class="card-heading p-4">
+                <div class="mini-stat-icon float-right">
+                    <i class="mdi mdi-cube-outline bg-primary  text-white"></i>
+                </div>
+                <div>
+                    <h5 class="font-16">So'ngi oyda </h5>
+                </div>
+                <h3 class="mt-4"><%= monthvisit%></h3>
+                <div class="progress mt-4" style="height: 4px;">
+                    <div class="progress-bar bg-primary" role="progressbar" style="width: 75%"
+                        aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <p class="text-muted mt-2 mb-0">Kuzatildi<span class="float-right"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-sm-6 col-xl-3">
+        <div class="card">
+            <div class="card-heading p-4">
+                <div class="mini-stat-icon float-right">
+                    <i class="mdi mdi-cube-outline bg-primary  text-white"></i>
+                </div>
+                <div>
+                    <h5 class="font-16">So'ngi haftada</h5>
+                </div>
+                <h3 class="mt-4"><%= weekvisit%></h3>
+                <div class="progress mt-4" style="height: 4px;">
+                    <div class="progress-bar bg-primary" role="progressbar" style="width: 75%"
+                        aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <p class="text-muted mt-2 mb-0">Kuzatildi<span class="float-right"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-6 col-xl-3">
+        <div class="card">
+            <div class="card-heading p-4">
+                <div class="mini-stat-icon float-right">
+                    <i class="mdi mdi-cube-outline bg-primary  text-white"></i>
+                </div>
+                <div>
+                    <h5 class="font-16">Bir kunlik</h5>
+                </div>
+                <h3 class="mt-4"><%= dayvisit%></h3>
+                <div class="progress mt-4" style="height: 4px;">
+                    <div class="progress-bar bg-primary" role="progressbar" style="width: 75%"
+                        aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <p class="text-muted mt-2 mb-0">Kuzatildi<span class="float-right"></span>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- START ROW -->
+<%if(user.role === 103){%>
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card m-b-30">
+            <div class="card-body">
+                <h4 class="mt-0 header-title mb-4">Adminlar Ro'yhati</h4>
+                <div class="table-responsive">
+                    <table class="table table-hover" >
+                        <thead>
+                            <tr>
+                                <th scope="col">Name</th>
+                                <th scope="col">Status</th>
+                                <th scope="col" >Edit</th>
+                                <th scope="col" >Delete</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <%for(item of users) {%>
+                            <tr>
+                                <td><%=item.fullname%></td>
+                                <%if(item.role === 101){%>
+                                <td><span class="badge badge-success">Jurnalist</span></td>
+                                <% }if(item.role === 102) {%>
+                                <td><span class="badge badge-success">Moderator</span></td>
+                                <% }if(item.role === 103) {%>
+                                <td><span class="badge badge-success">Admin</span></td> 
+                                <% }%>
+                                <td>
+                                <div>
+                                    <a href="/user/search/<%= item._id%>" class="btn btn-outline-info waves-effect waves-light">Edit</a>
+                                </div>
+                                </td>
+                                <td>
+                                <div>
+                                    <form action="<%=`/user/search/${item._id}?_method=DELETE`%>" method="POST"
+                                        class="btn btn-outline-danger waves-effect waves-light" >
+                                        <button style="margin:0;padding: 0; border: 0; border-radius: 5px; background:none; color: #FC5454;">
+                                           Delete
+                                        </button>
+                                    </form>
+                                </div>
+                                </td>
+                            </tr>
+                            <% }%>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<%}%>
+<!-- END ROW -->

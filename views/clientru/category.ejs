@@ -1,0 +1,171 @@
+<style>
+    p{
+    
+    box-sizing: border-box;
+    margin: 0px 0px 20px;
+    padding: 0px; 
+    line-height: 24px;
+    font-size: 18px;
+    color: #1e211f;
+    position: relative;
+    font-family: Montserrat;
+    }
+</style>
+<% var news%>
+<% var lastNews%>
+<% var data%>
+<% var best%>
+        <div class="intro space">
+            <div class="container">
+                <div class="intro__heading">
+                    <div class="left__content">
+                        <a class="back__link" href="/ru">Бош саҳифа</a>
+                        <% if(data) {%>
+                            <a class="back__town"><%=data %></a>
+                        <% }else if(news[0]) {%>
+                        <a class="back__town"><%=news[0].categoryID.name.ru %></a>
+                        <% }%>
+                    </div>
+                    <% if(lastNews) {%>
+                    <a class="rigth__title side__title" >Сўнги хабарлар</a>
+                    <% }%>
+                    <% if(best) {%>
+                        <a class="rigth__title side__title" >Энг кўп ўқилган</a>
+                    <% }%>
+                </div>
+                <div class="intro__inner">
+                    <div class="intro__item">
+                        <% if(news[0]) {%>
+                        <div class="intro__body">
+                            <a class="intro__images" href="/ru/news/name/<%= news[0].search%>">
+                                <img class="photo__intro" src="<%= news[0].poster.min%>" alt="uzb_img">
+                            </a>
+                            <div class="intro__content">
+                                <div class="data__content">
+                                    <span class="prevtext"><%= news[0].categoryID.name.ru%></span>
+                                    <div class="bottom__time_data">
+                                        <span class="intro__time"><%= moment(news[0].createdAt).format("DD.MM.YYYY") %></span> <span
+                                            class="clock__time"><%= news[0].createdAt.toTimeString().replace(/:\d+ /, ' ').split(" ")[0]%></span>
+                                    </div>
+                                </div>
+                                <p class="about__title"><%= news[0].name.ru%></p>
+
+                            </div>
+                        </div>
+                        <% }%>
+                        <div class="intro__bottom">
+                            <%if( news) {%>
+                                <%for (let i=1; i<news.length; i++) {%>
+                                    <%if(i===10){break}%>
+                            <div class="intro__col">
+                                <a class="col__body" href="/ru/news/name/<%= news[i].search%>">
+                                    <div class="col__photos">
+                                        <img class="col__photo" src="<%= news[i].poster.org%>" alt="col__img">
+                                    </div>
+                                    <div class="col__content">
+                                        <div class="data__content">
+                                            <span class="prevtext"><%= news[i].categoryID.name.ru%></span>
+                                            <div class="bottom__time_data">
+                                                <span class="intro__time"><%= moment(news[i].createdAt).format("DD.MM.YYYY") %></span> <span
+                                                    class="clock__time"><%= news[i].createdAt.toTimeString().replace(/:\d+ /, ' ').split(" ")[0]%></span>
+                                            </div>
+                                        </div>
+                                        <p class="bottom__text"><%= news[i].name.ru%></p>
+                                    </div>
+                                </a>
+                            </div>
+                            <% }%>
+                            <% }%>
+                            
+                            <div class="intro__bottom">
+                                <nav id="mainNav" class="navbar">
+                                    <div class="intro__bottom">
+                                        <%if( news.length>10) {%>
+                                            <%for (let i=10; i<news.length; i++) {%>
+                                        <div class="intro__col">
+                                            <a class="col__body" href="/ru/news/name/<%= news[i].search%>">
+                                                <div class="col__photos">
+                                                    <img class="col__photo" src="<%= news[i].poster.org%>" alt="col__img">
+                                                </div>
+                                                <div class="col__content">
+                                                    <div class="data__content">
+                                                        <span class="prevtext"><%= news[i].categoryID.name.uz%></span>
+                                                        <div class="bottom__time_data">
+                                                            <span class="intro__time"><%= moment(news[i].createdAt).format("DD.MM.YYYY") %></span> <span
+                                                                class="clock__time"><%= news[i].createdAt.toTimeString().replace(/:\d+ /, ' ').split(" ")[0]%></span>
+                                                        </div>
+                                                    </div>
+                                                    <p class="bottom__text"><%= news[i].name.uz%></p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <% }%>
+                                        <% }else{%>
+                                            <p>Yangiliklar hali qo'shilmagan</p>
+                                        <% }%>
+                                    </div>
+                                </nav>
+                                </div>
+                                <div class="center__all">
+                                    <button id="navToggle" class="center__all_link">Кўпроқ юклаш</button>
+                                   
+                                </div>
+
+                        </div> <!-- intro__bottom -->
+                    </div> <!-- intro__item -->
+
+                    <div class="intro__sidebar">
+                        <% if(lastNews) {%>
+                        <% for(item of lastNews) {%>
+                        <div class="sidebar__box">
+                            <a class="sidebar__body" href="/ru/news/name/<%= item.name.search%>">
+                                <span class="sidebar__time intro__time"><%= moment(item.createdAt).format("DD.MM.YYYY") %></span> <span
+                                    class="clock__time"><%= item.createdAt.toTimeString().replace(/:\d+ /, ' ').split(" ")[0]%></span>
+                                <span class="eyes"><%= item.seen%></span>
+                                <p class="body__text text"><%= item.name.ru%></p>
+                            </a>
+                        </div>
+                        <% }%>
+                        <div class="all__side">
+                            <a class="link__side" href="/ru/news/lastnews/24">Кўпроқ</a>
+                        </div>
+                        <% }%>
+                        <% if(best) {%>
+                            <% for(item of best) {%>
+                            <div class="sidebar__box">
+                                <a class="sidebar__body" href="/ru/news/name/<%= item.name.search%>">
+                                    <span class="sidebar__time intro__time"><%= moment(item.createdAt).format("DD.MM.YYYY") %></span> <span
+                                        class="clock__time"><%= item.createdAt.toTimeString().replace(/:\d+ /, ' ').split(" ")[0]%></span>
+                                    <span class="eyes"><%= item.seen%></span>
+                                    <p class="body__text text"><%= item.name.ru%></p>
+                                </a>
+                            </div>
+                        <% }%>
+                        <div class="all__side">
+                            <a class="link__side" href="/ru/news/mostseen/24">Кўпроқ</a>
+                        </div>
+                        <% }%>
+                        
+                    </div>
+                </div> <!-- intro__inner end -->
+            </div> <!-- container -->
+        </div> <!-- intro end -->
+
+         
+<script>
+    /* Toggle Nav with Raw JavaScript */
+// Set variables for key elements
+var mainNav = document.getElementById('mainNav');
+var navToggle = document.getElementById('navToggle');
+
+// Start by adding the class "collapse" to the mainNav
+mainNav.classList.add('collapsed');
+
+// Establish a function to toggle the class "collapse"
+function mainNavToggle() {
+    mainNav.classList.toggle('collapsed');
+}
+
+// Add a click event to run the mainNavToggle function
+navToggle.addEventListener('click', mainNavToggle);
+</script>

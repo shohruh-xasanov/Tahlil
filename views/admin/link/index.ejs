@@ -1,0 +1,116 @@
+<% var links%>
+  <div class="row">
+    <div class="col-12">
+      <div style="
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+        ">
+        <h4 class="m-3" style="font-weight: 700">Linklar ro'yhati</h4>
+        <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal"
+          data-target=".bs-example-modal-lg">
+          Yaratish
+        </button>
+      </div>
+   
+  
+      <div class="card m-b-30 table-responsive">
+        <div class="card-body table-responsive">
+          <table id="datatable" class="table table-bordered text-center"
+            style="border-collapse: collapse; border-spacing: 0; width: 100%; flex-wrap: wrap;">
+            <thead>
+              <tr>
+                <th>Telegram</th>
+                <th>Instagram</th>
+                <th>Facebook</th>
+                <th>Twitter</th>
+                <th>Yaratilgan sana</th>
+                <th style="width: 10%">Sozlamalar</th>
+              </tr>
+            </thead>
+  
+            <tbody>
+              <%if(links) {%>
+              <% for(let item of links) {%>
+                <tr>
+                  <td>
+                    <%= item.tg %>
+                  </td>
+                  <td>
+                    <%= item.insta %>
+                  </td>
+                  <td>
+                    <%= item.fb %>
+                  </td>
+                  <td>
+                    <%= item.tw %>
+                  </td>
+                  
+                  <td>
+                    <%= moment(item.createdAt).format("DD-MM-YYYY - hh:mm:ss") %>
+                  </td>
+                  <td style="
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-around;
+                    align-items: center;
+                  ">
+                    
+                    <a class="btn btn-outline-info waves-effect waves-light" href="<%=`/links/${item._id}`%>">
+                      <i class="far fa-edit"></i>
+                    </a>
+                    <form method="POST" class="hidden-r" action="<%=`/links/${item._id}?_method=DELETE`%>">
+                      <button type="submit" class="btn btn-outline-danger waves-effect waves-light">
+                        <i class="fa fa-trash"></i>
+                      </button>
+                    </form>
+                  </td>
+                </tr>
+                <% }%>
+                <% }%>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- end col -->
+  </div>
+  <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title mt-0" id="myLargeModalLabel">Yaratish</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form action="/links" method="POST" >
+            
+            <div class="mb-3">
+              <label for="">Telegram </label>
+              <input type="url" name="tg" class="form-control" required/>
+            </div>
+            <div class="mb-3">
+              <label for="">Instagram </label>
+              <input type="url" name="insta" class="form-control" required/>
+            </div>
+            <div class="mb-3">
+              <label for="">Facebook </label>
+              <input type="url" name="fb" class="form-control" required/>
+            </div>
+            <div class="mb-3">
+              <label for="">Twitter </label>
+              <input type="url" name="tw" class="form-control" required/>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Saqlash</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>

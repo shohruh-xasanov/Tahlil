@@ -1,0 +1,63 @@
+
+<% var news%>
+<% var lastNews%>
+<% var search%>
+        <div class="intro space">
+            <div class="container">
+                <div class="intro__heading">
+                    <div class="left__content">
+                        <a class="back__link" href="/">Бош саҳифа</a>
+                        <a class="back__town" ><%=search%></a>
+                    </div>
+                    <a class="rigth__title side__title" >Сўнги хабарлар</a>
+                </div>
+                <div class="intro__inner">
+                    <div class="intro__item">
+                      
+                        <div class="intro__bottom">
+                            <%if( news) {%>
+                                <%for (let i=0; i<news.length; i++) {%>
+                            <div class="intro__col">
+                                <a class="col__body" href="/news/name/<%= news[i].search%>">
+                                    <div class="col__photos">
+                                        <img class="col__photo" src="<%= news[0].poster.org%>" alt="col__img">
+                                    </div>
+                                    <div class="col__content">
+                                        <div class="data__content">
+                                            <span class="prevtext"><%= news[0].categoryID.name.uz%></span>
+                                            <div class="bottom__time_data">
+                                                <span class="intro__time"><%= moment(news[0].createdAt).format("DD.MM.YYYY") %></span> <span
+                                                    class="clock__time"><%= news[0].createdAt.toTimeString().replace(/:\d+ /, ' ').split(" ")[0]%></span>
+                                            </div>
+                                        </div>
+                                        <p class="bottom__text"><%= news[0].name.uz%></p>
+                                    </div>
+                                </a>
+                            </div>
+                            <% }%>
+                            <% }%>
+                        </div> <!-- intro__bottom -->
+                    </div> <!-- intro__item -->
+
+                    <div class="intro__sidebar">
+                        <% if(lastNews) {%>
+                        <% for(item of lastNews) {%>
+                        <div class="sidebar__box">
+                            <a class="sidebar__body" href="/news/name/<%= item.search%>">
+                                <span class="sidebar__time intro__time"><%= moment(item.createdAt).format("DD.MM.YYYY") %></span> <span
+                                    class="clock__time"><%= item.createdAt.toTimeString().replace(/:\d+ /, ' ').split(" ")[0]%></span>
+                                <span class="eyes"><%= item.seen%></span>
+                                <p class="body__text text"><%= item.name.uz%></p>
+                            </a>
+                        </div>
+                        <% }%>
+                        <% }%>
+                        <div class="all__side">
+                            <a class="link__side" href="/uz/news/lastnews/24">Кўпроқ</a>
+                        </div>
+                    </div>
+                </div> <!-- intro__inner end -->
+            </div> <!-- container -->
+        </div> <!-- intro end -->
+
+       

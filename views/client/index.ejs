@@ -1,0 +1,377 @@
+<% var lastnews%>
+<% var seen%>
+<% var actual%>
+<% var reclame%>
+<% var photo%>
+<% var tahlil%>
+<% var categoryNews1%>
+<% var categoryNews2%>
+        <div class="intro space">
+            <div class="container">
+                <div class="intro__inner">
+                    <div class="intro__item">
+                        <%if(lastnews[0]) {%>
+                        <div class="intro__body">
+                            <a class="intro__images" href="/news/name/<%= lastnews[0].search%>">
+                                <img class="photo__intro" src="<%= lastnews[0].poster.min%>" alt="big__intro_img">
+                            </a>
+                            
+                            <div class="intro__content">
+                                <div class="data__content">
+                                    <span class="prevtext"><%= lastnews[0].categoryID.name.uz%></span>
+                                    <div class="bottom__time_data">
+                                        <span class="intro__time"><%= moment(lastnews[0].createdAt).format("DD.MM.YYYY") %></span> <span
+                                            class="clock__time"><%= lastnews[0].createdAt.toTimeString().replace(/:\d+ /, ' ').split(" ")[0]%></span>
+                                    </div>
+                                </div>
+                                <p class="about__title"><a href="href=/news/name/<%= lastnews[0].search%>"> <%= lastnews[0].name.uz%> </a></p>
+                            </div>
+                        </div>
+                        <% }%>
+                        <div class="intro__bottom">
+                            <%for(let i=1; i<lastnews.length; i++) {%>
+                                <%if(lastnews[i]) {%>
+                            <div class="intro__col">
+                                <a class="col__body" href="/news/name/<%= lastnews[i].search%>">
+                                    <div class="col__photos">
+                                        <img class="col__photo" src="<%= lastnews[i].poster.org%>" alt="col__img">
+                                    </div>
+                                    <div class="col__content">
+                                        <div class="data__content">
+                                            <%if(lastnews[i].categoryID){%>
+                                            <span class="prevtext"><%= lastnews[i].categoryID.name.uz%></span>
+                                            <% }%>
+                                            <div class="bottom__time_data">
+                                                <span class="intro__time"><%= moment(lastnews[i].createdAt).format("DD.MM.YYYY") %></span> <span
+                                                    class="clock__time"><%= lastnews[i].createdAt.toTimeString().replace(/:\d+ /, ' ').split(" ")[0]%></span>
+                                            </div>
+                                        </div>
+                                        <p class="bottom__text"><%= lastnews[i].name.uz%></p>
+                                    </div>
+                                </a>
+                            </div>
+                            <% }%>
+                            <% }%>
+                        </div> <!-- intro__bottom -->
+                    </div> <!-- intro__item -->
+                    <div class="intro__sidebar">
+                        <h4 class="side__title title">Энг кўп ўқилган</h4>
+                        <%if(seen){%>
+                        <% for(item of seen) {%>
+                            <div class="sidebar__box">
+                                <a class="sidebar__body" href="/news/name/<%= item.search%>">
+                                    <span class="sidebar__time intro__time"><%= moment(item.createdAt).format("DD.MM.YYYY") %></span> <span
+                                        class="clock__time"><%= item.createdAt.toTimeString().replace(/:\d+ /, ' ').split(" ")[0]%></span>
+                                    <span class="eyes"><%= item.seen%></span>
+                                    <p class="body__text text"><%= item.name.uz%></p>
+                                </a>
+                            </div>
+                            <% }%>
+                            <% }%>
+                    </div>
+                </div> <!-- intro__inner end -->
+            </div> <!-- container -->
+        </div> <!-- intro end -->
+
+
+
+        <section class="news">
+            <div class="container">
+                <a class="side__title title title" >Долзарб хабарлар</a>
+
+                <div class="news__inner">
+
+                    <div class="news__box">
+                        <% for(let i=0; i<actual.length -2; i++){%>
+                        <a class="news__body" href="/news/name/<%= actual[i].search%>">
+                            <div class="col__photos">
+                                <img class="news__photo" src="<%=actual[i].poster.org%>" alt="news__photo">
+                            </div>
+                            <div class="news__content">
+                                <div class="data__content">
+                                    <%if(actual[i].categoryID){%>
+                                    <span class="prevtext"><%= actual[i].categoryID.name.uz%></span>
+                                    <% }%>
+                                    <div class="bottom__time_data">
+                                        <span class="intro__time"><%= moment(actual[i].createdAt).format("DD.MM.YYYY") %></span> <span
+                                            class="clock__time"><%= actual[i].createdAt.toTimeString().replace(/:\d+ /, ' ').split(" ")[0]%></span>
+                                    </div>
+                                </div>
+                                <p class="body__text text"><%= actual[i].name.uz%></p>
+                            </div>
+                        </a>
+                        <% }%>
+
+                    </div>
+                    <div class="news__box">
+                        <% for(let i=4; i<actual.length; i++) {%>
+                        <div class="news__items">
+                            <a class="news__images" href="/news/name/<%= actual[i].search%>">
+                                <div class="news__linear">
+                                    <img class="news__photo" src="<%=actual[i].poster.min%>" alt="images__link">
+                                </div>
+                                <div class="content__bottom"> 
+                                    <%if(actual[i].categoryID){%>
+                                    <span class="prevtext"><%= actual[i].categoryID.name.uz%></span>
+                                    <% }%>
+                                    <p class="content__text"><%= actual[i].name.uz%></p>
+                                    <p class="content__subtext"><%= actual[i].title.uz.split(' ', 10).join(' ').toString()%> ...</p>
+                                    <span class="last__time"><%= actual[i].createdAt.toTimeString().replace(/:\d+ /, ' ').split(" ")[0]%> %></span>
+                                </div>
+                            </a>
+                        </div>
+                        <% }%>
+                    </div><!-- news box-->
+
+                </div><!-- news__inner end -->
+            </div><!-- container-->
+        </section> <!-- news end -->
+        <%if (reclame) {%>
+        <div class="reklama">
+            <div class="container">
+                <a href="<%= reclame[0].link%>">
+                    <img class="reklame__img" src="<%= reclame[0].image%>" alt="placehold">
+                </a>
+            </div>
+        </div>
+        <% }%>
+
+        <section class="video space">
+            <div class="container">
+
+
+                <div class="video__inner video-arrow">
+
+                    <div class="video__box news-slider">
+                        <div class="heading__items swiper-arrow">
+                            <a class="side__title" >Видео янгиликлар</a>
+                            <a class="video__all" href="example-video.html">Барча видеолар</a>
+                            <div class="swiper__arrows">
+                                <div class="swiper-arrow-prev"></div>
+                                <div class="swiper-arrow-next"></div>
+                            </div>
+                        </div>
+                        <div class="video__body">
+                            <div class="swiper-container myvideo-slider">
+
+                                <div class="swiper-wrapper myvideo-slider-wrap">
+                                    <%if(video[0]) {%>
+                                    <div class="swiper-slide">
+                                        <a class="video__link" href="/news/name/<%= video[0].search%>" >
+                                            <figure class="video__link__wrap video__link__icon">
+                                                <img class="img__link" src="<%= video[0].poster.min%>"
+                                                    alt="video__img">
+                                            </figure>
+                                            <div class="video__content">
+                                                <%if(video[0].categoryID) {%>
+                                                <span class="news__prevtext prevtext"><%= video[0].categoryID.name.uz%></span>
+                                                <% }%>
+                                                <span class="intro__time"><%= moment(video[0].createdAt).format("DD.MM.YYYY") %></span> <span
+                                                    class="clock__time"><%= video[0].createdAt.toTimeString().replace(/:\d+ /, ' ').split(" ")[0]%></span>
+                                                <p class="video__text"><%= video[0].name.uz%></p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <% }%>
+                                    <%if(video[1]) {%>
+                                    <div class="swiper-slide">
+                                        <a class="video__link" href="/news/name/<%= video[1].search%>">
+                                            <figure class="video__link__wrap video__link__icon">
+                                                <img class="img__link" src="<%= video[1].poster.min%>"
+                                                    alt="video__img">
+                                            </figure>
+                                            <div class="video__content"> 
+                                                <%if(video[1].categoryID) {%>
+                                                <span class="news__prevtext prevtext"><%= video[1].categoryID.name.uz%></span>
+                                                <% }%>
+                                                <span class="intro__time"><%= moment(video[1].createdAt).format("DD.MM.YYYY") %></span> <span
+                                                    class="clock__time"><%= video[1].createdAt.toTimeString().replace(/:\d+ /, ' ').split(" ")[0]%></span>
+                                                <p class="video__text"><%= video[1].name.uz%></p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <% }%>
+                                    <%if(video[2]) {%>
+                                        <div class="swiper-slide">
+                                            <a class="video__link" href="/news/name/<%= video[1].search%>" >
+                                                <figure class="video__link__wrap video__link__icon">
+                                                    <img class="img__link" src="<%= video[2].poster.min%>"
+                                                        alt="video__img">
+                                                </figure>
+                                                <div class="video__content"> 
+                                                    <%if(video[2].categoryID) {%>
+                                                    <span class="news__prevtext prevtext"><%= video[2].categoryID.name.uz%></span>
+                                                    <% }%>
+                                                    <span class="intro__time"><%= moment(video[2].createdAt).format("DD.MM.YYYY") %></span> <span
+                                                        class="clock__time"><%= video[2].createdAt.toTimeString().replace(/:\d+ /, ' ').split(" ")[0]%></span>
+                                                    <p class="video__text"><%= video[2].name.uz%></p>
+                                                </div>
+                                            </a>
+                                        </div>
+                                        <% }%>
+                                </div> 
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="video__box news-slider">
+                        <div class="heading__items swiper-arrow">
+                            <a class="side__title" >Фото янгиликлар</ha>
+                                <a class="video__all photo__all" href="#">Барча фотолар</a>
+                                <div class="swiper__arrows">
+                                    <div class="swiper-arrow-prev"></div>
+                                    <div class="swiper-arrow-next"></div>
+                                </div>
+                        </div>
+                        <div class="swiper-container myvideo-slider">
+
+                            <div class="swiper-wrapper myvideo-slider-wrap">
+                                <%if(photo[0]) {%>
+                                <div class="swiper-slide">
+                                    <a class="video__link" href="/news/name/<%= photo[0].search%>" >
+                                        <figure class="video__link__wrap photo__link__icon">
+                                            <img class="img__link" src="<%= photo[0].poster.min%>"
+                                                alt="video__img">
+                                        </figure>
+                                        <div class="video__content">
+                                            <%if(photo[0].categoryID) {%>
+                                            <span class="news__prevtext prevtext"><%= photo[0].categoryID.name.uz%></span>
+                                            <% }%>
+                                            <span class="intro__time"><%= moment(photo[0].createdAt).format("DD.MM.YYYY") %></span> <span
+                                                class="clock__time"><%= photo[0].createdAt.toTimeString().replace(/:\d+ /, ' ').split(" ")[0]%></span>
+                                            <p class="video__text"><%= photo[0].name.uz%></p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <% }%>
+                                <%if(photo[1]) {%>
+                                <div class="swiper-slide">
+                                    <a class="video__link" href="/news/name/<%= photo[1].search%>">
+                                        <figure class="video__link__wrap photo__link__icon">
+                                            <img class="img__link" src="<%= photo[1].poster.min%>"
+                                                alt="video__img">
+                                        </figure>
+                                        <div class="video__content"> 
+                                            <%if(photo[1].categoryID) {%>
+                                            <span class="news__prevtext prevtext"><%= photo[1].categoryID.name.uz%></span>
+                                            <% }%>
+                                            <span class="intro__time"><%= moment(photo[1].createdAt).format("DD.MM.YYYY") %></span> <span
+                                                class="clock__time"><%= photo[1].createdAt.toTimeString().replace(/:\d+ /, ' ').split(" ")[0]%></span>
+                                            <p class="video__text"><%= photo[1].name.uz%></p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <% }%>
+                                <%if(photo[2]) {%>
+                                    <div class="swiper-slide">
+                                        <a class="video__link" href="/news/name/<%= photo[2].search%>" >
+                                            <figure class="video__link__wrap photo__link__icon">
+                                                <img class="img__link" src="<%= photo[2].poster.min%>"
+                                                    alt="video__img">
+                                            </figure>
+                                            <div class="video__content"> 
+                                                <%if(photo[2].categoryID) {%>
+                                                <span class="news__prevtext prevtext"><%= photo[2].categoryID.name.uz%></span>
+                                                <% }%>
+                                                <span class="intro__time"><%= moment(photo[2].createdAt).format("DD.MM.YYYY") %></span> <span
+                                                    class="clock__time"><%= photo[2].createdAt.toTimeString().replace(/:\d+ /, ' ').split(" ")[0]%></span>
+                                                <p class="video__text"><%= photo[2].name.uz%></p>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    <% }%>
+                            </div> 
+                        </div>
+                    </div>
+
+
+                    <!--video__box-->
+
+
+                </div> <!-- video__inner end -->
+            </div> <!-- container end -->
+        </section> <!-- video end-->
+
+
+        <section class="street">
+            <div class="container">
+
+                <div class="street__heading">
+                    <a class="street__title side__title" ><%= newsCat1[0].categoryID.name.uz%></a>
+                    <a class="video__all" href="/news/category/<%= newsCat1[0].categoryID.search%>">Барчаси</a>
+                </div>
+                    <div class="sport__parents">
+                        <%if(newsCat1) {%>
+                            <% for(item of newsCat1) {%>
+                            <div class="sport__box">
+                                <a class="box__link" href="/news/name/<%= item.search%>">
+                                    <div class="col__photos">
+                                        <img class="box__photo" src="<%=item.poster.org%>" alt="photo__sport">
+                                    </div>
+                                    <div class="box__bottom_content">
+                                        <div class="box__bottom_content">
+                                            <div class="data__content">
+                                                <%if(item.categoryID){%>
+                                                <span class="prevtext"><%= item.categoryID.name.uz%></span>
+                                                <% }%>
+                                                <div class="bottom__time_data">
+                                                    <span class="intro__time"><%= moment(item.createdAt).format("DD.MM.YYYY") %></span> <span
+                                                        class="clock__time"><%= item.createdAt.toTimeString().replace(/:\d+ /, ' ').split(" ")[0]%></span>
+                                                </div>
+                                            </div>
+                                            <p class="photo__bottom_text text"><%= item.name.uz%></p>
+                                        </div>
+        
+                                    </div>
+                                </a>
+                            </div>
+                            <% }%>
+                            <% }%>
+                    </div>
+                </div> 
+                <!-- street__inner  -->
+            </div> 
+            <!-- container -->
+        </section>
+        <!-- street end -->
+
+
+        <section class="sport space">
+            <div class="container">
+                <div class="sport__head">
+                    <h4 class="sport__title side__title"><%= newsCat2[0].categoryID.name.uz%></h4>
+                    <a class="video__all" href="/news/category/<%= newsCat2[0].categoryID.search%>">Барчаси</a>
+                </div>
+
+                 <div class="sport__parents">
+                    <%if(newsCat2) {%>
+                    <% for(item of newsCat2) {%>
+                    <div class="sport__box">
+                        <a class="box__link" href="/news/name/<%= item.search%>">
+                            <div class="col__photos">
+                                <img class="box__photo" src="<%=item.poster.org%>" alt="photo__sport">
+                            </div>
+                            <div class="box__bottom_content">
+                                <div class="box__bottom_content">
+                                    <div class="data__content">
+                                        <%if(item.categoryID){%>
+                                        <span class="prevtext"><%= item.categoryID.name.uz%></span>
+                                        <% }%>
+                                        <div class="bottom__time_data">
+                                            <span class="intro__time"><%= moment(item.createdAt).format("DD.MM.YYYY") %></span> <span
+                                                class="clock__time"><%= item.createdAt.toTimeString().replace(/:\d+ /, ' ').split(" ")[0]%></span>
+                                        </div>
+                                    </div>
+                                    <p class="photo__bottom_text text"><%= item.name.uz%></p>
+                                </div>
+
+                            </div>
+                        </a>
+                    </div>
+                    <% }%>
+                    <% }%>
+                </div><!-- sport parents -->
+
+            </div><!-- container -->
+        </section> <!-- sport end -->

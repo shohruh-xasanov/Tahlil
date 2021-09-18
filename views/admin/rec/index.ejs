@@ -1,0 +1,65 @@
+<% var rek%>
+
+  <div class="row">
+    <div class="col-12">
+      <div style="
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+        ">
+        <h4 class="m-3" style="font-weight: 700">Reklame murojatlari</h4>
+      
+      </div>
+   
+  
+      <div class="card m-b-30 table-responsive">
+        <div class="card-body table-responsive">
+          <table id="datatable" class="table table-bordered text-center"
+            style="border-collapse: collapse; border-spacing: 0; width: 100%; flex-wrap: wrap;">
+            <thead>
+              <tr>
+                <th>Sarlavha</th>
+                <th>Tavsif</th>
+                <th style="width: 10%">Sozlamalar</th>
+              </tr>
+            </thead>
+  
+            <tbody>
+              <%if(rek) {%>
+              <% for(let item of rek) {%>
+                <tr>
+                  <td>
+                    <a href="<%= item.file%>"> <%= item.file.split('/',5)[4]%></a>
+                  </td>
+                  <td>
+                    <%= moment(item.createdAt).format("DD-MM-YYYY - hh:mm:ss") %>
+                  </td>
+                  <td style="
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-around;
+                    align-items: center;
+                  ">
+
+                    <form method="POST" class="hidden-r" action="<%=`/sendrec/${item._id}?_method=DELETE`%>">
+                      <button type="submit" class="btn btn-outline-danger waves-effect waves-light">
+                        <i class="fa fa-trash"></i>
+                      </button>
+                    </form>
+                  </td>
+                </tr>
+                <% } %>
+                <% }%>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <!-- end col -->
+  </div>
+ 
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+ 

@@ -1,0 +1,29 @@
+<% var about%>
+<section class="web">
+    <div class="container">
+        <div class="web__head">
+            <a class="back__link" href="/ru">Бош саҳифа</a>
+            <a class="back__town" >Реклама</a>
+        </div>
+
+        <div class="web__inner">
+            <div class="web__box">
+                <h4 class="web__title web__name">Сайт ҳақида</h4>
+                <% if(about[0]) {%>
+                <p class="web__text text"><a href="/ru">Tahlil24.uz</a> 
+                    <%= about[0].title.ru%>
+                  <p class="web__text text">
+                      <% about[0].description.ru%>
+                  </p>
+                  <% }%>
+            </div>
+            <div class="web__box">
+                <h4 class="web__title web__name"><a href="/ru">Tahlil24.uz</a> cайти материалларидан фойдаланиш
+                    шартлари</h4>
+                    <%if(about[0]) {%>
+                <p class="web__text text"><%- about[0].conditions.ru%></p>
+                    <% }%>
+            </div>
+        </div>
+    </div>
+</section>

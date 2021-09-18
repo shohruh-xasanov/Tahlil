@@ -1,0 +1,416 @@
+<style>
+  .file-upload {
+    background-color: #2e304a;
+    width: 600px;
+    margin: 0 auto;
+    padding: 0;
+  }
+  .file-upload-btn {
+    width: 100%;
+    margin: 0;
+    color: #fff;
+    background: #2e304a;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    border-bottom: 4px solid #2e304a;
+    transition: all 0.2s ease;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .file-upload-btn:hover {
+    background: #2e304a;
+    color: #ffffff;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+  .file-upload-btn:active {
+    border: 0;
+    transition: all 0.2s ease;
+  }
+  .file-upload-content {
+    display: none;
+    text-align: center;
+  }
+  .file-upload-input {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .image-upload-wrap {
+    margin-top: 20px;
+    border: 4px dashed #2e304a;
+    position: relative;
+  }
+  .image-dropping,
+  .image-upload-wrap:hover {
+    background-color: #2e304a;
+  }
+  .image-title-wrap {
+    padding: 0 15px 15px 15px;
+    color: #222;
+  }
+  .drag-text {
+    text-align: center;
+  }
+  .drag-text h3 {
+    font-weight: 100;
+    text-transform: uppercase;
+    color: #fff;
+    padding: 60px 0;
+  }
+  .file-upload-image {
+    max-height: 300px;
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+  }
+  .remove-image {
+    width: 400px;
+    margin: 0;
+    color: #fff;
+    background: #2e304a;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    border-bottom: 4px solid #2e304a;
+    transition: all 0.2s ease;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .remove-image:hover {
+    background: #2e304a;
+    color: #ffffff;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+  .remove-image:active {
+    border: 0;
+    transition: all 0.2s ease;
+  }
+</style>
+<% var users%>
+<% var category%>
+<div class="row">
+    <div class="col-12">
+        <div style="
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+          ">
+            <h4 class="m-3" style="font-weight: 700">Yangilik qo'shish</h4>
+        </div>  
+    </div>
+
+    <div class="col-12">
+        <div class="card m-b-30">
+            <div class="card-body">
+               <form action="/create/news/ru" method="POST" ref="uploadForm"  encType="multipart/form-data">
+                      <div class="form-group">
+                        <label>
+                          <h4 class="mt-0 header-title">Yangilik nomi qushish uchun joy </h4>
+                        </label>
+                        <div>
+                          <textarea type="text" class="form-control" required name="nameru" minlength="10" rows="2"
+                           placeholder="Nomi qo'shmoq"></textarea>
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for=""> 
+                          <h4 class="mt-0 header-title">Tavsif qushish uchun joy </h4>
+                        </label>
+                        <div>
+                            <textarea  class="form-control" rows="4" required name="titleru"
+                            data-parsley-minlength="10" placeholder="Tavsif qo'shmoq" cols="10"></textarea> 
+                        </div>
+                      </div>
+                    <div class="form-group">
+                      <label>
+                        <h4 class="mt-0 header-title">Tag qo'shish uchun joy </h4>
+                      </label>
+                      <div>
+                          <input type="text" class="form-control" required name="tags"
+                                 data-parsley-minlength="6" placeholder="#tag qo'shmoq"/>
+                      </div>
+                    </div>
+                    <div class="form-group row" style="margin: 30px 0;">
+                      <label class="col-sm-2 col-form-label">Kategoriya qo'shish</label>
+                      <div class="col-sm-10" >
+                          <select required name="categoryID" class="form-control" >
+                            <% for (let item of category) {%>
+                              <option value="<%= item._id %>"><%= item.name.ru %></option>
+                              <% } %>
+                          </select>
+                      </div>
+                  </div>
+                  <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Muharrir qo'shing 
+                    </label>
+                      <div class="col-sm-10" >
+                        <input type="text" class="form-control"  name="editor"  rows="2"
+                        placeholder="Muharrir qo'shmoq"/>
+                    </div>
+                  </div>
+                    <div class="form-group">
+                      <label for="">
+                        <h4 class="mt-0 header-title">Poster qushish uchun joy </h4>
+                      <p class="sub-title">Rasm eng kamida bitta qo'shilishi shart</p>
+                      </label>
+                    </div>
+                   <div class="mb-3">
+                     <div class="input-group mb-3 pb-3 mt-2">
+                        <div class="file-upload" style="margin-left: 0; margin-right: 0; width: 100%; ">
+                           <div class="image-upload-wrap" style="width: 100%; margin-top: 4px;">
+                              <input name="poster"  class="file-upload-input" type="file" onchange="readURL(this);" min="1" minlength="1" required/>
+                                <div class="drag-text">
+                                  <h3>Poster tanlang</h3>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                    </div>
+                      <div class="file-upload-content">
+                        <img class="file-upload-image" src="/public/uploads/image" alt="img" />
+                          <div class="image-title-wrap">
+                            <button type="button" onclick="removeUpload()" class="remove-image">
+                              Remove <span class="image-title">Uploaded Poster</span>
+                            </button>
+                          </div>
+                      </div>
+                    <div class="form-group">
+              
+                      <div>
+                        <label>
+                        <h4 class="mt-0 header-title">Posterga izoh qoldirish </h4>
+                      </label>
+                        <textarea type="text" class="form-control" name="imageInfo" rows="1"
+                         placeholder="Rasmga izoh qoldiring"></textarea>
+                       </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="">
+                        <h4 class="mt-0 header-title">Yangilik matni </h4>
+                        <p class="sub-title">Yangilikning to'liq matni kiritiladi</p>
+                      </label>
+                        <textarea id="elm1" name="descriptionru"  minlength="40" required 
+                        data-parsley-minlength="10"> </textarea>
+                    </div>
+                    <div class="form-group">
+                      <label> <h4>Dolzarb Xabar sifatida belgilash</h4></label>
+                      <div>
+                          <div class="custom-control custom-checkbox">
+                              <input type="checkbox" value="true" class="custom-control-input" name="actual" id="customCheck1" data-parsley-multiple="groups"
+                                    data-parsley-mincheck="2">
+                              <label class="custom-control-label" for="customCheck1" >Dolzarb xabar</label>
+                         </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="">
+                        <h4 class="mt-0 header-title">Yangiliklarga rasm qo'shmoq</h4>
+                      </label>
+                      <div>
+                        <input type="file" name="images"   multiple >
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <h4 class="mt-0 header-title">Matn qo'shish</h4>
+                            <p class="mb-0">
+                                        
+                                <button class="btn btn-primary mo-mb-2" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                  Matn qo'shish
+                                </button>
+                            </p>
+                            <div class="collapse" id="collapseExample">
+                              <div class="form-group" style="margin-top: 10px;">
+                                <label for="">
+                                  <h4 class="mt-0 header-title" >Yangilik matni </h4>
+                                  <p class="sub-title">Yangilikning  matni kiritiladi</p>
+                                </label>
+                                  <textarea id="elm1" name="descriptionru1"  minlength="40" required 
+                                  data-parsley-minlength="10"> </textarea>
+                              </div>
+                              <div class="form-group">
+                                <label for="">
+                                  <h4 class="mt-0 header-title">Yangiliklarga rasm qo'shmoq</h4>
+                                </label>
+                                <div>
+                                  <input type="file" name="images"   multiple >
+                                </div>
+                              </div>
+                              <h4 class="mt-0 header-title">Matn qo'shish</h4>
+                              <p class="mb-0">
+                                          
+                                  <button class="btn btn-primary mo-mb-2" type="button" data-toggle="collapse" data-target="#collapseExample1" aria-expanded="false" aria-controls="collapseExample">
+                                    Matn qo'shish
+                                  </button>
+                              </p>
+                              <div class="collapse" id="collapseExample1">
+                                <div class="form-group" style="margin-top: 10px;">
+                                  <label for="">
+                                    <h4 class="mt-0 header-title" >Yangilik matni </h4>
+                                    <p class="sub-title">Yangilikning  matni kiritiladi</p>
+                                  </label>
+                                    <textarea id="elm1" name="descriptionru2"  minlength="40" required 
+                                    data-parsley-minlength="10"> </textarea>
+                                </div>
+                                <div class="form-group">
+                                  <label for="">
+                                    <h4 class="mt-0 header-title">Yangiliklarga rasm qo'shmoq</h4>
+                                  </label>
+                                  <div>
+                                    <input type="file" name="images"   multiple >
+                                  </div>
+                                </div>
+                                <h4 class="mt-0 header-title">Matn qo'shish</h4>
+                                <p class="mb-0">
+                                            
+                                    <button class="btn btn-primary mo-mb-2" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample">
+                                      Matn qo'shish
+                                    </button>
+                                </p>
+                                <div class="collapse" id="collapseExample2">
+                                  <div class="form-group" style="margin-top: 10px;">
+                                    <label for="">
+                                      <h4 class="mt-0 header-title" >Yangilik matni </h4>
+                                      <p class="sub-title">Yangilikning  matni kiritiladi</p>
+                                    </label>
+                                      <textarea id="elm1" name="descriptionru3"  minlength="40" required 
+                                      data-parsley-minlength="10"> </textarea>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="">
+                                      <h4 class="mt-0 header-title">Yangiliklarga rasm qo'shmoq</h4>
+                                    </label>
+                                    <div>
+                                      <input type="file" name="images"   multiple >
+                                    </div>
+                                  </div>
+                                  <h4 class="mt-0 header-title">Matn qo'shish</h4>
+                                  <p class="mb-0">
+                                              
+                                      <button class="btn btn-primary mo-mb-2" type="button" data-toggle="collapse" data-target="#collapseExample3" aria-expanded="false" aria-controls="collapseExample">
+                                        Matn qo'shish
+                                      </button>
+                                  </p>
+                                  <div class="collapse" id="collapseExample3">
+                                    <div class="form-group" style="margin-top: 10px;">
+                                      <label for="">
+                                        <h4 class="mt-0 header-title" >Yangilik matni </h4>
+                                        <p class="sub-title">Yangilikning  matni kiritiladi</p>
+                                      </label>
+                                        <textarea id="elm1" name="descriptionru4"  minlength="40" required 
+                                        data-parsley-minlength="10"> </textarea>
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="">
+                                        <h4 class="mt-0 header-title">Yangiliklarga rasm qo'shmoq</h4>
+                                      </label>
+                                      <div>
+                                        <input type="file" name="images"   multiple >
+                                      </div>
+                                    </div>
+                                    <h4 class="mt-0 header-title">Matn qo'shish</h4>
+                                    <p class="mb-0">
+                                                
+                                        <button class="btn btn-primary mo-mb-2" type="button" data-toggle="collapse" data-target="#collapseExample4" aria-expanded="false" aria-controls="collapseExample">
+                                          Matn qo'shish
+                                        </button>
+                                    </p>
+                                    <div class="collapse" id="collapseExample4">
+                                      <div class="form-group" style="margin-top: 10px;">
+                                        <label for="">
+                                          <h4 class="mt-0 header-title" >Yangilik matni </h4>
+                                          <p class="sub-title">Yangilikning  matni kiritiladi</p>
+                                        </label>
+                                          <textarea id="elm1" name="descriptionru5"  minlength="40" required 
+                                          data-parsley-minlength="10"> </textarea>
+                                      </div>
+                                      <div class="form-group">
+                                        <label for="">
+                                          <h4 class="mt-0 header-title">Yangiliklarga rasm qo'shmoq</h4>
+                                        </label>
+                                        <div>
+                                          <input type="file" name="images"   multiple >
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                </div>
+                    <div style="margin-top: 20px;">
+                      <button type="submit" class="btn btn-primary waves-effect waves-light">Saqlash</button>
+                      <button type="reset" class="btn btn-secondary waves-effect m-l-5" >Tozalash</button>
+                    </div>
+                </form>
+             </div>
+          </div>
+      </div> 
+      <!-- end col -->
+    </div>
+
+  
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+<script>
+  axios
+        .get(
+          `/public/uploads/image`
+        ).then(res => {
+          console.log(res.data)
+        })
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        $(".image-upload-wrap").hide();
+        $(".file-upload-image").attr("src", e.target.result);
+        $(".file-upload-content").show();
+        $(".image-title").html(input.files[0].name);
+      };
+      reader.readAsDataURL(input.files[0]);
+    } else {
+      removeUpload();
+    }
+  }
+  function removeUpload() {
+    $(".file-upload-input").replaceWith($(".file-upload-input").clone());
+    $(".file-upload-content").hide();
+    $(".image-upload-wrap").show();
+  }
+  $(".image-upload-wrap").bind("dragover", function () {
+    $(".image-upload-wrap").addClass("image-dropping");
+  });
+  $(".image-upload-wrap").bind("dragleave", function () {
+    $(".image-upload-wrap").removeClass("image-dropping");
+  });
+</script>
+<script src="/admin/plugins/tinymce/tinymce.min.js"></script>
+
+
+        
+<!-- App js -->
+<script src="/admin/assets/js/app.js"></script>
+<script>
+    $(document).ready(function () {
+        if($("#elm1").length > 0){
+            tinymce.init({
+                selector: "textarea#elm1",
+                theme: "modern",
+                height:400
+            });
+        }
+    });
+</script>

@@ -1,0 +1,256 @@
+<% var news%>
+<% var best%>
+<% var newsbycategory%>
+<style>
+    p{
+    
+    box-sizing: border-box;
+    margin: 0px 0px 20px;
+    padding: 0px; 
+    line-height: 24px;
+    font-size: 18px;
+    color: #1e211f;
+    position: relative;
+    font-family: Montserrat;
+    }
+</style>
+        <section class="uzb">
+            <div class="container">
+                <div class="uzb__inner">
+                    <div class="uzbekistan__time">
+                        <span class="prevtext"><%= news.categoryID.name.eng%></span>
+                        <div class="data__contents">
+                            <span class="intro__time"><%= moment(news.createdAt).format("DD.MM.YYYY") %></span> <span class="clock__time">12:50</span>
+                        </div>
+                        
+                        <%if(links) {%>
+                        <div class="uzb__link">
+                            <a class="uzb-icon" href="<%= links[0].tg%>">
+                                <img class="icon__soc" src="/images/social__icon/fotoicon1.svg" alt="telegram">
+                            </a>
+                            <a class="uzb-icon" href="<%= links[0].insta%>">
+                                <img class="icon__soc" src="/images/social__icon/fotoicon2.svg" alt="Instagram">
+                            </a>
+                            <a class="uzb-icon" href="<%= links[0].tw%>">
+                                <img class="icon__soc" src="/images/social__icon/fotoicon3.svg" alt="Twitter">
+                            </a>
+                            <a class="uzb-icon" href="<%= links[0].fb%>">
+                                <img class="icon__soc" src="/images/social__icon/fotoicon4.svg" alt="facebook">
+                            </a>
+                            <a class="uzb-icon" href="#">
+                                <img class="icon__soc" src="/images/social__icon/fotoicon5.svg" alt="share">
+                            </a>
+                        </div>
+                        <% }%>
+                    </div>
+                    <a class="uzb__title side__title" >Энг кўп ўқилган</a>
+                </div>
+            </div> <!-- container -->
+        </section> <!-- uzb end -->
+
+
+        <section class="jaxon">
+            <div class="container">
+                <div class="jaxon__inner">
+                    <div class="jaxon__content">
+                        <div class="jaxon__head">
+                            <h4 class="jaxon__title"><%= news.name.eng%></h4>
+                            <p class="jaxon__info"><%= news.title.eng%></p>
+                        </div>
+                        <%if(news.videoLink) {%>  
+                        <div class="jaxon__video">
+                            <iframe width="1017" height="472" src="<%= news.videoLink%>"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                        </div>
+                            <% } else{%>
+                        <div class="jaxon__video">
+                            <div class="jaxon__photo">
+                                <img src="<%= news.poster.min%>" alt="jaxon__img" class="jaxon__images">
+                                <%if(news.imageInfo){%>
+                                <a class="img__link" ><%= news.imageInfo%></a>
+                                <% }else{%>
+                                <a class="img__link" ></a>
+                                <% }%>
+                            </div>
+                        </div>
+                        <% }%> 
+                        
+                        <%if(news.description.eng) {%>
+                            <%-news.description.eng%>
+                        <% }%>
+                        <%if(news.images[0]) {%>
+                        <div class="jaxon__video">
+                            <div class="jaxon__photo">
+                                <img src="<%= news.images[0].url%>" alt="jaxon__img" class="jaxon__images">
+                            </div>
+                        </div>
+                        <% }%>
+                        <%if(news.description.eng1.length > 2) {%>
+                            <%-news.description.eng1%>
+                        <% }%>
+                        <%if(news.images[1]) {%>
+                        <div class="jaxon__video">
+                            <div class="jaxon__photo">
+                                <img src="<%= news.images[0].url%>" alt="jaxon__img" class="jaxon__images">
+                            </div>
+                        </div>
+                        <% }%>
+                        <%if(news.description.eng2.length > 2) {%>
+                            <%-news.description.eng2%>
+                        <% }%>
+                        <%if(news.images[2]) {%>
+                        <div class="jaxon__video">
+                            <div class="jaxon__photo">
+                                <img src="<%= news.images[2].url%>" alt="jaxon__img" class="jaxon__images">
+                            </div>
+                        </div>
+                        <% }%>
+                        <%if(news.description.eng3.length > 2) {%>
+                            <%-news.description.eng3%>
+                        <% }%>
+                        <%if(news.images[3]) {%>
+                        <div class="jaxon__video">
+                            <div class="jaxon__photo">
+                                <img src="<%= news.images[3].url%>" alt="jaxon__img" class="jaxon__images">
+                            </div>
+                        </div>
+                        <% }%>
+                        <%if(news.description.eng4.length > 2) {%>
+                            <%-news.description.eng4%>
+                        <% }%>
+                        <%if(news.images[4]) {%>
+                        <div class="jaxon__video">
+                            <div class="jaxon__photo">
+                                <img src="<%= news.images[4].url%>" alt="jaxon__img" class="jaxon__images">
+                            </div>
+                        </div>
+                        <% }%>
+                        <%if(news.description.eng5.length > 2) {%>
+                            <%-news.description.eng5%>
+                        <% }%>
+                        <%if(news.images[5]) {%>
+                        <div class="jaxon__video">
+                            <div class="jaxon__photo">
+                                <img src="<%= news.images[5].url%>" alt="jaxon__img" class="jaxon__images">
+                            </div>
+                        </div>
+                        <% }%>
+                        <%if(news.images[6]) {%>
+                            <div class="jaxon__video">
+                                <div class="jaxon__photo">
+                                    <img src="<%= news.images[6].url%>" alt="jaxon__img" class="jaxon__images">
+                                </div>
+                            </div>
+                            <% }%>
+                          <%if(news.images[7]) {%>
+                        <div class="jaxon__video">
+                            <div class="jaxon__photo">
+                                <img src="<%= news.images[7].url%>" alt="jaxon__img" class="jaxon__images">
+                            </div>
+                        </div>
+                        <% }%>
+                        <%if(news.images[8]) {%>
+                            <div class="jaxon__video">
+                                <div class="jaxon__photo">
+                                    <img src="<%= news.images[8].url%>" alt="jaxon__img" class="jaxon__images">
+                                </div>
+                            </div>
+                        <% }%>
+                        <%if(news.images[9]) {%>
+                            <div class="jaxon__video">
+                                <div class="jaxon__photo">
+                                    <img src="<%= news.images[9].url%>" alt="jaxon__img" class="jaxon__images">
+                                </div>
+                            </div>
+                        <% }%>
+                        <%if(news.editor){%>
+                            <div class="bottom__border">
+                                <p class="jaxon__text text"> <br>
+                                    <span class="author"><%= news.editor%></span>
+                                </p>
+                            </div>  
+                           <% }else{%>
+                            <div class="bottom__border">
+                            </div>  
+                            <% }%>
+                        <div class="company__link">
+                            <%let tag= news.tags.split('#')%>
+                            <% if(tag[1]){%>
+                                <form action="/en/news/tags/search" class="search" style="margin-left: 0; display:inline;">
+                                <input style="padding: 0;" class="search-txt" type="text" name="search" value="<%= tag[1]%>" >
+                                    <button style="padding: 6px 20px;" type="submit" class="company__item">
+                                        #<%= tag[1]%> 
+                                    </button>
+                                </form>
+                            <% }%>
+                            <% if(tag[2]) {%>
+                                <form action="/en/news/tags/search" class="search" style="margin-left: 0; display:inline;">
+                                <input style="padding: 0;" class="search-txt" type="text" name="search" value="<%= tag[2]%>" >
+                                    <button style="padding: 6px 20px;" type="submit" class="company__item">
+                                        #<%= tag[2]%>
+                                    </button>
+                                </form>
+                            <%}%>
+                            <%if(tag[3]){%>
+                                <form action="/en/news/tags/search" class="search" style="margin-left: 0; display:inline;">
+                                <input style="padding: 0;" class="search-txt" type="text" name="search" value="<%= tag[3]%>" >
+                                    <button style="padding: 6px 20px;" type="submit" class="company__item">
+                                        #<%= tag[3]%>
+                                    </button>
+                                </form>
+                            <%}%>
+                            </form>
+                        </div>
+                        <div class="telegram__link">
+                            <a class="telegram__page" href="<%= links[0].tg%>">
+                                Бизни телеграмда кузатиб боринг
+                            </a>
+                        </div>
+
+                    </div> <!-- jaxon__content -->
+                    <div class="jaxon__sidebar">
+                        <%for(item of best) {%>
+                        <div class="sidebar__box">
+                            <a class="sidebar__body" href="/en/news/name/<%=item.search%>">
+                                <span class="sidebar__time intro__time"><%= moment(item.createdAt).format("DD.MM.YYYY") %></span> <span
+                                    class="clock__time"><%= item.createdAt.toTimeString().replace(/:\d+ /, ' ').split(" ")[0]%></span>
+                                <span class="eyes"><%= item.seen%></span>
+                                <p class="body__text text"><%= item.name.eng%></p>
+                            </a>
+                        </div>
+                        <% }%>
+                        <div class="all__side">
+                            <a class="link__side"  href="/en/news/mostseen/24">Кўпроқ</a>
+                        </div>
+                    </div>
+                </div> <!-- jaxon__inner-->
+            </div> <!-- container -->
+        </section> <!-- intro end -->
+
+        <section class="theme">
+            <div class="container">
+                <h4 class="theme__title side__title">Мавзуга доир</h4>
+                <div class="theme__content">
+                    <% for(item of newsbycategory) {%>
+                    <a class="theme__body" href="/en/news/name/<%=item.search%>">
+                        <div class="theme__images">
+                            <img class="news__photo" src="<%= item.poster.org%>" alt="news__photo">
+                        </div>
+                        <div class="news__content">
+                            <div class="data__content">
+                                <span class="prevtext"><%= item.categoryID.name.eng%></span>
+                                <div class="bottom__time_data">
+                                    <span class="intro__time"><%= moment(item.createdAt).format("DD.MM.YYYY") %></span> <span class="clock__time"><%= item.createdAt.toTimeString().replace(/:\d+ /, ' ').split(" ")[0]%></span>
+                                </div>
+                            </div>
+                            <p class="body__text text"><%= item.name.eng%></p>
+                        </div>
+                    </a>
+                    <% }%>
+                </div><!-- theme content end -->
+            </div>
+        </section> <!-- theme end -->
+<script>
+</script>

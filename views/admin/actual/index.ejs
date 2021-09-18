@@ -1,0 +1,213 @@
+
+<style>
+  .file-upload {
+    background-color: #ffffff;
+    width: 600px;
+    margin: 0 auto;
+    padding: 10px;
+  }
+  .file-upload-btn {
+    width: 100%;
+    margin: 0;
+    color: #fff;
+    background: #2e304a;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    border-bottom: 4px solid #2e304a;
+    transition: all 0.2s ease;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .file-upload-btn:hover {
+    background: #2e304a;
+    color: #ffffff;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+  .file-upload-btn:active {
+    border: 0;
+    transition: all 0.2s ease;
+  }
+  .file-upload-content {
+    display: none;
+    text-align: center;
+  }
+  .file-upload-input {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    outline: none;
+    opacity: 0;
+    cursor: pointer;
+  }
+  .image-upload-wrap {
+    margin-top: 20px;
+    border: 4px dashed #2e304a;
+    position: relative;
+  }
+  .image-dropping,
+  .image-upload-wrap:hover {
+    background-color: #2e304a;
+  }
+  .image-title-wrap {
+    padding: 0 15px 15px 15px;
+    color: #222;
+  }
+  .drag-text {
+    text-align: center;
+  }
+  .drag-text h3 {
+    font-weight: 100;
+    text-transform: uppercase;
+    color: #000;
+    padding: 60px 0;
+  }
+  .file-upload-image {
+    max-height: 300px;
+    max-width: 400px;
+    margin: auto;
+    padding: 20px;
+  }
+  .remove-image {
+    width: 400px;
+    margin: 0;
+    color: rgb(0, 0, 0);
+    background: #2e304a;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    border-bottom: 4px solid #2e304a;
+    transition: all 0.2s ease;
+    outline: none;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+  .remove-image:hover {
+    background: #2e304a;
+    color: #ffffff;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+  .remove-image:active {
+    border: 0;
+    transition: all 0.2s ease;
+  }
+</style>
+<%var video%>
+<%var news%>
+<%var actual%>
+
+<%if(video) {%>
+  <% actual = video%>
+  <% }%>
+
+<%if(news) {%>
+    <% actual = news%>
+<% }%>
+<div class="row">
+  <div class="col-12">
+    <div
+      style="
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      "
+    >
+      <h4 class="m-3" style="font-weight: 700">Dolzarb yangiliklar ro'yhati</h4>
+    </div>
+
+    <div class="card m-b-30 table-responsive">
+      <div class="card-body table-responsive">
+        <table
+          id="datatable"
+          class="table table-bordered text-center"
+          style="
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 100%;
+            flex-wrap: wrap;
+          "
+        >
+          <thead>
+            <tr>
+              <th style="width: 100px">Rasm</th>
+              <th>Nomi</th>
+              <th>Tavsifi</th>
+              <th>Kategoriyasi</th>
+              <th>Yaratilgan sana</th>
+              <th >Sozlama</th>
+            </tr>
+          </thead>
+          <tbody>
+            <%if(actual) {%> <%let i = 0%> <% for(let item of actual) {%> <% i++%>
+            <tr>
+              <%if(item.poster) {%>
+              <td>
+                <img
+                  style="width: 200px; height: 100px"
+                  src="<%= item.poster.min %>"
+                  name="image"
+                />
+              </td>
+              <% }else {%>
+                <td></td>
+                <% }%>
+              <%if(item.name.uz) {%>
+                  <td><%= item.name.uz.split(' ', 10).join(' ').toString()%>...</td>
+              <% }%>
+              <%if(item.name.eng) {%>
+                  <td><%= item.name.eng.split(' ', 10).join(' ').toString()%>...</td>
+              <% }%>
+              <%if(item.name.ru) {%>
+                  <td><%= item.name.ru.split(' ', 10).join(' ').toString()%>...</td>
+              <% }%>
+              <%if(item.title.uz) {%>
+                  <td><%= item.title.uz.split(' ', 10).join(' ').toString()%>...</td>
+              <% }%>
+              <%if(item.title.eng) {%>
+                  <td><%= item.title.eng.split(' ', 10).join(' ').toString()%>...</td>
+              <% }%>
+              <%if(item.title.ru) {%>
+                  <td><%= item.title.ru.split(' ', 10).join(' ').toString()%>...</td>
+              <% }%>  
+              <%if(item.categoryID) {%>
+                <%if(item.name.uz) {%>
+                  <td><%= item.categoryID.name.uz%></td>
+                  <%}%>
+                  <%if(item.name.eng) {%>
+                    <td><%= item.categoryID.name.eng%></td>
+                  <%}%>
+                  <%if(item.name.ru) {%>
+                    <td><%= item.categoryID.name.ru%></td>
+                    <% }%>
+                <% }else {%>
+                  <td></td>
+                  <%}%>
+              <td>
+                <%= moment(item.createdAt).format("DD-MM-YYYY ") %>
+              </td>
+              <td style="margin-left:0; margin-right: 0;"
+              >
+                <a 
+                  class="btn btn-outline-info waves-effect waves-light"
+                  href="<%=`/news/uz/${item._id}`%>"
+                >
+                  <i class="mdi mdi-minus-box"></i>
+                </a>
+              </td>
+            </tr>
+            <% } %> 
+            <% }%>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!-- end col -->
+</div>
+

@@ -1,0 +1,265 @@
+<% var about%>
+<style>
+  .text-area {
+    display: inline-block !important;
+    height: 400px;
+  }
+</style>
+<div class="row">
+  <div class="col-12">
+    <div
+      style="
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      "
+    >
+      <h4 class="m-3" style="font-weight: 700">Biz haqimizda</h4>
+      <button
+        type="button"
+        class="btn btn-primary waves-effect waves-light"
+        data-toggle="modal"
+        data-target=".bs-example-modal-lg"
+      >
+        Yaratish
+      </button>
+    </div>
+
+    <div class="card m-b-30 table-responsive">
+      <div class="card-body table-responsive">
+        <table
+          id="datatable"
+          class="table table-bordered text-center"
+          style="border-collapse: collapse; border-spacing: 0; width: 100%; flex-wrap: wrap;"
+        >
+          <thead>
+            <tr>
+              <th>Nom</th>
+              <th>Description</th>
+              <th>Shartlar</th>
+              <th>Yaratilgan sana</th>
+              <th>To'liq malumot</th>
+              <th style="width: 10%">Sozlamalar</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <% if(about) {%> <%let i = 0%> <% for(let item of about) {%> <%i++%>
+            <tr>
+              <td><%= item.title.uz %></td>
+              <td><%= item.description.uz %></td>
+              <td><%= item.conditions.uz %></td>
+              <td>
+                <%= moment(item.createdAt).format("DD-MM-YYYY - hh:mm:ss") %>
+              </td>
+              <td>
+                <button
+                  type="button"
+                  class="btn btn-primary waves-effect waves-light"
+                  data-toggle="modal"
+                  data-target=".bs-example-modal-lg<%=i%>"
+                >
+                  Batafsil
+                </button>
+                <div
+                  class="modal fade bs-example-modal-lg<%=i%>"
+                  tabindex="-1"
+                  role="dialog"
+                  aria-labelledby="myLargeModalLabel1"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title mt-0" id="myLargeModalLabel1">
+                          Batafsil
+                        </h5>
+                        <button
+                          type="button"
+                          class="close"
+                          data-dismiss="modal"
+                          aria-label="Close"
+                        >
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <div>
+                          <p><%= item.title.uz%></p>
+                          <p><%= item.title.ru%></p>
+                          <p><%= item.title.eng%></p>
+                          <p><%= item.description.uz%></p>
+                          <p><%= item.description.ru%></p>
+                          <p><%= item.description.eng%></p>
+                          <p><%= item.conditions.uz%></p>
+                          <p><%= item.conditions.ru%></p>
+                          <p><%= item.conditions.eng%></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </td>
+              <td
+                style="
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: space-around;
+                  align-items: center;
+                "
+              >
+                <a
+                  class="btn btn-outline-info waves-effect waves-light"
+                  href="<%=`/about/${item._id}`%>"
+                >
+                  <i class="far fa-edit"></i>
+                </a>
+                <form
+                  method="POST"
+                  class="hidden-r"
+                  action="<%=`/about/${item._id}?_method=DELETE`%>"
+                >
+                  <button type="submit" class="btn btn-outline-danger waves-effect waves-light">
+                    <i class="fa fa-trash"></i>
+                  </button>
+                </form>
+              </td>
+            </tr>
+            <% } %> <% }%>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <!-- end col -->
+</div>
+<div
+  class="modal fade bs-example-modal-lg"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myLargeModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title mt-0" id="myLargeModalLabel">Yaratish</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/about" method="POST">
+          <div class="mb-3">
+            <label for="">Tavsif </label>
+            <input
+              type="text"
+              minlength="5"
+              maxlength="50"
+              name="titleuz"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="">Title </label>
+            <input
+              type="text"
+              minlength="5"
+              maxlength="50"
+              name="titleeng"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="">Название </label>
+            <input
+              type="text"
+              minlength="5"
+              maxlength="50"
+              name="titleru"
+              class="form-control"
+              required
+            />
+          </div>
+          <div class="mb-3">
+            <label for="">Deskriptioni </label>
+            <textarea
+              style="display: inline-block; height: 100px"
+              type="text"
+              minlength="5"
+              name="descriptionuz"
+              class="form-control ext-area"
+              required
+            ></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="">Description </label>
+            <textarea
+              style="display: inline-block; height: 100px"
+              type="text"
+              minlength="5"
+              maxlength="50"
+              name="descriptioneng"
+              class="form-control"
+              required
+            ></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="">Название </label>
+            <textarea
+              style="display: inline-block; height: 100px"
+              type="text"
+              minlength="5"
+              name="descriptionru"
+              class="form-control"
+              required
+            ></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="">Shartlar </label>
+            <textarea
+              style="display: inline-block; height: 100px"
+              type="text"
+              minlength="5"
+              name="conditionsuz"
+              class="form-control"
+              required
+            ></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="">Conditions </label>
+            <textarea
+              style="display: inline-block; height: 100px"
+              type="text"
+              minlength="5"
+              name="conditionseng"
+              class="form-control"
+              required
+            ></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="">Название </label>
+            <textarea
+              style="display: inline-block; height: 100px"
+              type="text"
+              minlength="5"
+              name="conditionsru"
+              class="form-control"
+              required
+            ></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Saqlash</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
