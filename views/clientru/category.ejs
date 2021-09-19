@@ -56,7 +56,7 @@
                         <div class="intro__bottom">
                             <%if( news) {%>
                                 <%for (let i=1; i<news.length; i++) {%>
-                                    <%if(i===10){break}%>
+                                    <%if(i===20){break}%>
                             <div class="intro__col">
                                 <a class="col__body" href="/ru/news/name/<%= news[i].search%>">
                                     <div class="col__photos">
@@ -80,8 +80,8 @@
                             <div class="intro__bottom">
                                 <nav id="mainNav" class="navbar">
                                     <div class="intro__bottom">
-                                        <%if( news.length>10) {%>
-                                            <%for (let i=10; i<news.length; i++) {%>
+                                        <%if( news.length>20) {%>
+                                            <%for (let i=20; i<news.length; i++) {%>
                                         <div class="intro__col">
                                             <a class="col__body" href="/ru/news/name/<%= news[i].search%>">
                                                 <div class="col__photos">
@@ -106,7 +106,7 @@
                                     </div>
                                 </nav>
                                 </div>
-                                <% if(news.length>11) {%>
+                                <% if(news.length>21) {%>
                                 <div class="center__all">
                                     <button id="navToggle" class="center__all_link">Кўпроқ юклаш</button>
                                    

@@ -32,7 +32,9 @@ const getVedioNews = {
                 }
                 const convert = Convert(nameru).split('ʺ').join('').toString()
                 const convert1 = convert.split('-').join(' ').toString()
-                const search = convert1.split(' ').join('-').toString()
+                const convert2 = convert1.split('\r\n').join(' ').toString()
+                const search = convert2.split(' ').join('-').toString()
+
             const news = new News({
                 name:{ru:nameru},
                 title:{ru:titleru},
@@ -145,9 +147,10 @@ const getVedioNews = {
                 urls.push({url : file})
             }
         }
-        const convert = Convert(nameru).split('ʺ').join('').toString()
-                const convert1 = convert.split('-').join(' ').toString()
-                const search = convert1.split(' ').join('-').toString()
+         const convert = Convert(nameru).split('ʺ').join('').toString()
+            const convert1 = convert.split('-').join(' ').toString()
+            const convert2 = convert1.split('\r\n').join(' ').toString()
+            const search = convert2.split(' ').join('-').toString()
         await News.findByIdAndUpdate({_id:news._id}, {
             name:{ru:nameru},
             title:{ru:titleru},

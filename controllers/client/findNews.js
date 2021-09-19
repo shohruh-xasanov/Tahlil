@@ -10,7 +10,7 @@ const findNews = {
         const category1 = await Category.findOne({search: req.params.name})
         const id = category1._id
         const news = await News.find({categoryID: id}).and({ ["name.uz"]: { $gte: 0 }})
-            .sort({createdAt:-1}).populate('categoryID').limit(30)
+            .sort({createdAt:-1}).populate('categoryID').limit(40)
         const lastNews = await News.find({ ["name.uz"]: { $gte: 0 } }).sort({createdAt:-1}).limit(8)
         res.render('client/category', {
             title:category1.name.uz +' янгиликлари',
@@ -42,7 +42,7 @@ const findNews = {
         twoday.setDate(twoday.getDate()-7)
         const news = await News.find({ 
             ["name.uz"]: { $gte: 0 },
-            createdAt:{$gte: twoday} }).limit(30).sort({seen:-1}).populate('categoryID')
+            createdAt:{$gte: twoday} }).limit(40).sort({seen:-1}).populate('categoryID')
         const links = await Links.find().limit(1).sort({createdAt:-1})
         const category = await Category.find({['name.uz']:{$gte:0}}).limit(7)
         const lastNews = await News.find({ 
@@ -57,7 +57,7 @@ const findNews = {
         let twoday = new Date()
         twoday.setDate(twoday.getDate()-7)
         const news = await News.find({ 
-            ["name.uz"]: { $gte: 0 }}).limit(30).sort({createdAt:-1}).populate('categoryID')
+            ["name.uz"]: { $gte: 0 }}).limit(40).sort({createdAt:-1}).populate('categoryID')
         const links = await Links.find().limit(1).sort({createdAt:-1})
         const category = await Category.find({['name.uz']:{$gte:0}}).limit(7)
         
@@ -68,6 +68,41 @@ const findNews = {
             title:'Сўнги хабарлар',
             layout:'./client_layout', news, best, category,
             links, data:'Сўнги хабарлар'
+        })
+    },
+    
+    videoNews : async (req,res)=>{
+        let twoday = new Date()
+        twoday.setDate(twoday.getDate()-7)
+        const news = await News.find({ 
+            ["name.uz"]: { $gte: 0 }}).and({ videoLink: { $gte: 0 } }).limit(40).sort({createdAt:-1}).populate('categoryID')
+        const links = await Links.find().limit(1).sort({createdAt:-1})
+        const category = await Category.find({['name.uz']:{$gte:0}}).limit(7)
+        
+        const best = await News.find({ 
+            ["name.uz"]: { $gte: 0 },
+            createdAt:{$gte: twoday} }).limit(6).sort({seen:-1})
+        res.render('client/category', {
+            title:'Сўнги хабарлар',
+            layout:'./client_layout', news, best, category,
+            links, data:'Барча видеолар'
+        })
+    },
+    photoNews : async (req,res)=>{
+        let twoday = new Date()
+        twoday.setDate(twoday.getDate()-7)
+        const news = await News.find({ 
+            ["name.uz"]: { $gte: 0 }}).and({ videoLink:undefined }).limit(40).sort({createdAt:-1}).populate('categoryID')
+        const links = await Links.find().limit(1).sort({createdAt:-1})
+        const category = await Category.find({['name.uz']:{$gte:0}}).limit(7)
+        
+        const best = await News.find({ 
+            ["name.uz"]: { $gte: 0 },
+            createdAt:{$gte: twoday} }).limit(6).sort({seen:-1})
+        res.render('client/category', {
+            title:'Сўнги хабарлар',
+            layout:'./client_layout', news, best, category,
+            links, data:'Барча фотолар'
         })
     }
 }

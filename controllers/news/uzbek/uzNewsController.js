@@ -32,7 +32,8 @@ const getNews = {
             // const convert = transliterate(nameuz)
             const convert = Convert(nameuz).split('ʺ').join('').toString()
             const convert1 = convert.split('-').join(' ').toString()
-            const search = convert1.split(' ').join('-').toString()
+            const convert2 = convert1.split('\r\n').join(' ').toString()
+            const search = convert2.split(' ').join('-').toString()
             const news = new News({
                 name:{uz:nameuz},
                 title:{uz:titleuz},
@@ -181,8 +182,9 @@ const getNews = {
             }
         }
         const convert = Convert(nameuz).split('ʺ').join('').toString()
-            const convert1 = convert.split('-').join(' ').toString()
-            const search = convert1.split(' ').join('-').toString()
+        const convert1 = convert.split('-').join(' ').toString()
+        const convert2 = convert1.split('\r\n').join(' ').toString()
+        const search = convert2.split(' ').join('-').toString()
         
         await News.findByIdAndUpdate({_id:news._id}, {
             name:{uz:nameuz},

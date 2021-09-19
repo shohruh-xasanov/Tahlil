@@ -16,6 +16,7 @@
     .company__item {
         cursor: pointer;
     }
+    
 </style>
         <section class="uzb">
             <div class="container">
@@ -47,8 +48,6 @@
                 </div>
             </div> <!-- container -->
         </section> <!-- uzb end -->
-
-
         <section class="jaxon">
             <div class="container">
                 <div class="jaxon__inner">
@@ -77,7 +76,12 @@
                         </div>
                         <% }%> 
                         <%if(news.description.uz) {%>
-                            <%-news.description.uz%>
+                            <div class="jaxon__video">
+                                <div class="jaxon__photo">
+                                    <div class="jaxon__images" ><%-news.description.uz%></div>
+                                </div>
+                            </div>
+                            
                         <% }%>
                         <%if(news.images[0]) {%>
                         <div class="jaxon__video">

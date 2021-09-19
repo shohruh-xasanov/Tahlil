@@ -29,8 +29,10 @@ const getVedioNews = {
                 }
             }
             const convert = Convert(nameeng).split('ʺ').join('').toString()
-                const convert1 = convert.split('-').join(' ').toString()
-                const search = convert1.split(' ').join('-').toString()
+            const convert1 = convert.split('-').join(' ').toString()
+            const convert2 = convert1.split('\r\n').join(' ').toString()
+            const search = convert2.split(' ').join('-').toString()
+
             const news = new News({
                 name:{eng:nameeng},
                 title:{eng:titleeng},
@@ -146,8 +148,10 @@ const getVedioNews = {
             }
         }
         const convert = Convert(nameeng).split('ʺ').join('').toString()
-                const convert1 = convert.split('-').join(' ').toString()
-                const search = convert1.split(' ').join('-').toString()
+        const convert1 = convert.split('-').join(' ').toString()
+        const convert2 = convert1.split('\r\n').join(' ').toString()
+        const search = convert2.split(' ').join('-').toString()
+
         await News.findByIdAndUpdate({_id:news._id}, {
             name:{eng:nameeng},
             title:{eng:titleeng},
