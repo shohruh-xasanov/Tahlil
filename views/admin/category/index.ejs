@@ -24,8 +24,7 @@
             <thead>
               <tr>
                 <th>Nomi</th>
-                <th>Name</th>
-                <th>Название</th>
+                <th> Tili</th>
                 <th>Yaratilgan sana</th>
                 <%if(user.role === 103){%>
                 <th style="width: 15%">Sozlamalar</th>
@@ -37,13 +36,26 @@
               <% for(let item of category) {%>
                 <tr>
                   <td>
+                    <%if(item.name.uz) {%>
                     <%= item.name.uz %>
+                    <% }%>
+                    <%if(item.name.ru) {%>
+                      <%= item.name.ru %>
+                      <% }%>
+                      <%if(item.name.eng) {%>
+                        <%= item.name.eng %>
+                        <% }%>
                   </td>
                   <td>
-                    <%= item.name.eng %>
-                  </td>
-                  <td>
-                    <%= item.name.ru %>
+                    <%if(item.name.uz) {%>
+                      Uzbekcha
+                      <% }%>
+                      <%if(item.name.ru) {%>
+                        Ruscha
+                        <% }%>
+                        <%if(item.name.eng) {%>
+                          Inglizcha
+                          <% }%>
                   </td>
                   <td>
                     <%= moment(item.createdAt).format("DD-MM-YYYY") %>

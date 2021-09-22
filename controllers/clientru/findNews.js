@@ -11,7 +11,9 @@ const findNews = {
         const id = category1._id
         const news = await News.find({categoryID: id}).and({ ["name.ru"]: { $gte: 0 }})
             .sort({createdAt:-1}).populate('categoryID').limit(40)
+            .select('-description -images -editor -imageInfo -tags -actual')
         const lastNews = await News.find({ ["name.ru"]: { $gte: 0 } }).sort({createdAt:-1}).limit(8)
+            .select('-description -images -editor -imageInfo -tags -actual')
         res.render('clientru/category', {
             layout:'./client_layoutru', news, lastNews, category,links
         })
@@ -26,10 +28,12 @@ const findNews = {
         const best = await News.find({ 
       ["name.ru"]: { $gte: 0 },
       createdAt:{$gte: twoday} }).limit(6).sort({seen:-1})
+      .select('-description -images -editor -imageInfo -tags -actual')
         const links = await Links.find().limit(1).sort({createdAt:-1})
         const category = await Category.find({['name.ru']:{$gte:0}}).limit(7)
         const newsbycategory = await News.find({categoryID:news.categoryID._id}).and({["name.ru"]: { $gte: 0 }})
             .limit(4).populate('categoryID').sort({createdAt:-1})
+            .select('-description -images -editor -imageInfo -tags -actual')
         res.render('clientru/single_page', {
             layout:'./client_layoutru', news, best, links,
             category, newsbycategory
@@ -41,10 +45,12 @@ const findNews = {
         const news = await News.find({ 
             ["name.ru"]: { $gte: 0 },
             createdAt:{$gte: twoday} }).limit(40).sort({seen:-1}).populate('categoryID')
+            .select('-description -images -editor -imageInfo -tags -actual')
         const links = await Links.find().limit(1).sort({createdAt:-1})
         const category = await Category.find({['name.ru']:{$gte:0}}).limit(7)
         const lastNews = await News.find({ 
             ["name.ru"]: { $gte: 0 }}).sort({createdAt:-1}).limit(8)
+            .select('-description -images -editor -imageInfo -tags -actual')
         res.render('clientru/category', {
             layout:'./client_layoutru', news, lastNews, category,
             links, data:'Энг кўп ўқилган'
@@ -53,10 +59,12 @@ const findNews = {
     lastNews : async (req,res)=>{
         const news = await News.find({ 
             ["name.ru"]: { $gte: 0 }}).limit(40).sort({createdAt:-1}).populate('categoryID')
+            .select('-description -images -editor -imageInfo -tags -actual')
         const links = await Links.find().limit(1).sort({createdAt:-1})
         const category = await Category.find({['name.ru']:{$gte:0}}).limit(7)
         const lastNews = await News.find({ 
             ["name.ru"]: { $gte: 0 }}).sort({createdAt:-1}).limit(8)
+            .select('-description -images -editor -imageInfo -tags -actual')
         res.render('clientru/category', {
             layout:'./client_layoutru', news, lastNews, category,
             links, data:'Сўнги хабарлар'
@@ -65,10 +73,12 @@ const findNews = {
     videoNews : async (req,res)=>{
         const news = await News.find({ 
             ["name.ru"]: { $gte: 0 }}).and({ videoLink: { $gte: 0 } }).limit(40).sort({createdAt:-1}).populate('categoryID')
+            .select('-description -images -editor -imageInfo -tags -actual')
         const links = await Links.find().limit(1).sort({createdAt:-1})
         const category = await Category.find({['name.ru']:{$gte:0}}).limit(7)
         const lastNews = await News.find({ 
             ["name.ru"]: { $gte: 0 }}).sort({createdAt:-1}).limit(8)
+            .select('-description -images -editor -imageInfo -tags -actual')
         res.render('clientru/category', {
             layout:'./client_layoutru', news, lastNews, category,
             links, data:'Барча видеолар'
@@ -77,10 +87,12 @@ const findNews = {
     photoNews : async (req,res)=>{
         const news = await News.find({ 
             ["name.ru"]: { $gte: 0 }}).and({ videoLink: undefined }).limit(40).sort({createdAt:-1}).populate('categoryID')
+            .select('-description -images -editor -imageInfo -tags -actual')
         const links = await Links.find().limit(1).sort({createdAt:-1})
         const category = await Category.find({['name.ru']:{$gte:0}}).limit(7)
         const lastNews = await News.find({ 
             ["name.ru"]: { $gte: 0 }}).sort({createdAt:-1}).limit(8)
+            .select('-description -images -editor -imageInfo -tags -actual')
         res.render('clientru/category', {
             layout:'./client_layoutru', news, lastNews, category,
             links, data:'Барча фотолар'
