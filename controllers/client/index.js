@@ -24,7 +24,7 @@ const getMain = {
       .limit(6)
       .select('-description -images -editor -imageInfo -tags -actual')
       .populate("categoryID");
-    const reclame = await Reclame.find().sort({ createdAt: -1 }).limit(1)
+    const reclame = await Reclame.find().sort({ createdAt: -1 }).limit(2)
     const video = await News.find({ ["name.uz"]: { $gte: 0 } }).and({ videoLink: { $gte: 0 } })
       .sort({ createdAt: -1 })
       .limit(3)

@@ -84,35 +84,35 @@ winston.add(new winston.transports.MongoDB({
     }
  }))   
 
-// app.use((req,res,next)=>{
-//     res.status(404)
-//     res.render('client/err',{
-//         layout:false
-//     })
-//     next()
-// })
+app.use((req,res,next)=>{
+    res.status(404)
+    res.render('client/err',{
+        layout:false
+    })
+    next()
+})
 
-// app.use(errorHandler)
-// app.use(function (err, req,res,next){
-//     console.log(err)
-//     winston.error(err)
-//     if(err){
-//         res.render('client/err',{
-//             layout:false
-//         })
-//     }
-//     next()
-// })
+app.use(errorHandler)
+app.use(function (err, req,res,next){
+    console.log(err)
+    winston.error(err)
+    if(err){
+        res.render('client/err',{
+            layout:false
+        })
+    }
+    next()
+})
 
-// process.on('uncaughtException', ex=>{
-//     winston.error(ex.message, ex)
-//     process.exit(1);
-// })
+process.on('uncaughtException', ex=>{
+    winston.error(ex.message, ex)
+    process.exit(1);
+})
 
-// process.on('unhandledRejection', ex=>{
-//     winston.error(ex.message, ex)
-//     process.exit(1);
-// })
+process.on('unhandledRejection', ex=>{
+    winston.error(ex.message, ex)
+    process.exit(1);
+})
 
 app.listen(PORT, ()=>{
     console.log('Server is running to localhost')

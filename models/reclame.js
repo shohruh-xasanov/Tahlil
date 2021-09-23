@@ -8,6 +8,9 @@ const reclameSchema = new mongoose.Schema({
     image:{
         type:String,
         requried:true
+    },
+    px:{
+        type:String,
     }
 },{
     timestamps:true

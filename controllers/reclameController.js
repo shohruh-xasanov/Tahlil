@@ -8,7 +8,17 @@ const getReclame = {
     createReclame : async (req,res)=>{
         try {
             const files = await sharpFile(req.file.filename, 1316, 180)
-            const reclame = new Reclame({image:files, link:req.body.link})
+            const reclame = new Reclame({image:files, link:req.body.link,px:1316})
+            await reclame.save()
+            res.redirect('/reclame')
+        } catch (error) {
+            res.status(500).json({msg: error.message})
+        }
+    },
+    createReclame2 : async (req,res)=>{
+        try {
+            const files = await sharpFile(req.file.filename, 319, 638)
+            const reclame = new Reclame({image:files, link:req.body.link, px:319})
             await reclame.save()
             res.redirect('/reclame')
         } catch (error) {

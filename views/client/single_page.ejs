@@ -37,7 +37,7 @@
                     <div class="uzbekistan__time">
                         <span class="prevtext"><%= news.categoryID.name.uz%></span>
                         <div class="data__contents">
-                            <span class="intro__time"><%= moment(news.createdAt).format("DD.MM.YYYY") %></span> <span class="clock__time">12:50</span>
+                            <span class="intro__time"><%= moment(news.createdAt).format("DD.MM.YYYY") %></span> <span class="clock__time"><%= news.createdAt.toTimeString().replace(/:\d+ /, ' ').split(" ")[0]%></span>
                         </div>
                         
                         <%if(links) {%>

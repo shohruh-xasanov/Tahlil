@@ -107,8 +107,12 @@
       ">
       <h4 class="m-3" style="font-weight: 700">Reklamalar ro'yhati</h4>
       <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal"
+        data-target=".bs-example-modal-lg1">
+        319-638px ga Yaratish
+      </button>
+      <button type="button" class="btn btn-primary waves-effect waves-light" data-toggle="modal"
         data-target=".bs-example-modal-lg">
-        Yaratish
+        1316, 180px ga Yaratish
       </button>
     </div>
  
@@ -130,7 +134,11 @@
             <% for(let item of reclame) {%>
               <tr>
                 <td>
+                  <%if(item.px==1316) {%>
                   <img style="width: 100%; height: 100px;" src="<%= item.image %>" name="image">
+                  <%} else{%>
+                    <img style="width: 40%; height: 100px;" src="<%= item.image %>" name="image">
+                  <% }%>
                 </td> 
                 
                 <td>
@@ -180,7 +188,7 @@
             </label>
             <div>
                 <input type="url" class="form-control" required name="link"
-                       data-parsley-minlength="10" placeholder="https://www.youtube.com"/>
+                       data-parsley-minlength="10" placeholder="Link qo'shish"/>
             </div>
           </div>
           <div class="mb-3">
@@ -189,7 +197,58 @@
                 <div class="image-upload-wrap">
                   <input name="image" class="file-upload-input" type="file" onchange="readURL(this);" min="1" minlength="1" required/>
                   <div class="drag-text">
-                    <h3>Rasm tanlang</h3>
+                    <h3>1316, 180px</h3>
+                  </div>
+                </div>
+                <div class="file-upload-content">
+                  <img class="file-upload-image" src="/course/axios" alt="img" />
+                  <div class="image-title-wrap">
+                    <button type="button" onclick="removeUpload()" class="remove-image">
+                      Remove <span class="image-title">Uploaded Image</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          
+          <button type="submit" class="btn btn-primary">Saqlash</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade bs-example-modal-lg1" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title mt-0" id="myLargeModalLabel">Yaratish</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/reclame2" method="POST" ref="uploadForm"  encType="multipart/form-data">
+         
+          <div class="form-group">
+            <label>
+              <h4 class="mt-0 header-title">Reklamaga link qo'shish </h4>
+            </label>
+            <div>
+                <input type="url" class="form-control" required name="link"
+                       data-parsley-minlength="10" placeholder="Link qo'shish"/>
+            </div>
+          </div>
+          <div class="mb-3">
+            <div class="input-group mb-3 pb-3 mt-2">
+              <div class="file-upload">
+                <div class="image-upload-wrap">
+                  <input name="image" class="file-upload-input" type="file" onchange="readURL(this);" min="1" minlength="1" required/>
+                  <div class="drag-text">
+                    <h3>319px-638px</h3>
                   </div>
                 </div>
                 <div class="file-upload-content">

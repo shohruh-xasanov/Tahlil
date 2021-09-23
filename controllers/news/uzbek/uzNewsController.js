@@ -85,6 +85,7 @@ const getNews = {
         const news = await News.find({actual: true})
             .limit(100)
             .sort({createdAt:-1})
+            .select('-description -images -editor -imageInfo -tags -actual')
             .populate('categoryID')
             res.render('admin/actual/index', {
                 layout:'admin_layout', menu, user, 
