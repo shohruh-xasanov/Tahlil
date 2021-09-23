@@ -56,6 +56,7 @@ const getVedioNews = {
         const news = await News.find({['name.eng']:{$gte:0}}).and({ videoLink: { $gte: 0 } })
             .limit(100)
             .sort({createdAt:-1})
+            .select('-description -images -editor -imageInfo -tags -actual')
             .populate('categoryID')
         const menu = await Menu.find()
             .limit(1)

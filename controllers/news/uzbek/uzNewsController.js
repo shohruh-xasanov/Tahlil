@@ -56,6 +56,7 @@ const getNews = {
         const news = await News.find({['name.uz']:{$gte:0}}).and({ videoLink:undefined })
             .limit(100)
             .sort({createdAt:-1})
+            .select('-description -images -editor -imageInfo -tags -actual')
             .populate('categoryID')
         const menu = await Menu.find().limit(1).sort({createdAt:-1})
         const user = req.session.admin
