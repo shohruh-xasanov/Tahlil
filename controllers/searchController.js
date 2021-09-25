@@ -39,7 +39,7 @@ exports.searchNewsclienten = async(req,res)=>{
     const lastNews = await News.find({['name.eng']:{$gte:0}}).limit(5).sort({createdAt:-1})
     res.render("clienten/searchnews", {
         title:search,
-        layout: "./client_layout", news, lastNews, search,links
+        layout: "./client_layouten", news, lastNews, search,links
     });
 }
 exports.searchNewsclientru = async(req,res)=>{
@@ -52,7 +52,7 @@ exports.searchNewsclientru = async(req,res)=>{
     const lastNews = await News.find({['name.ru']:{$gte:0}}).limit(5).sort({createdAt:-1})
     res.render("clientru/searchnews", {
         title:search,
-        layout: "./client_layout", news, lastNews, search,links
+        layout: "./client_layoutru", news, lastNews, search,links
     });
 }
 

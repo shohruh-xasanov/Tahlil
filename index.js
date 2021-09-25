@@ -13,13 +13,11 @@ const ejs = require('ejs')
 const methodOverride = require('method-override')
 const app = express()
 const compression = require('compression')
-const helmet = require('helmet')
 const errorHandler = require('./middleware/error')
 const winston = require('winston')
 require('winston-mongodb')
 
 connectDB()
-
 app.use(
     session({
         secret: "this_is_session_secret_key_07565434546",
@@ -44,7 +42,6 @@ app.use(methodOverride('_method',{
 app.use(compression())
 app.use(cookieParser())
 app.use(cors())
-app.use(helmet())
 app.use(layout)
 app.set('view engine', 'ejs')
 app.set('views', './views')

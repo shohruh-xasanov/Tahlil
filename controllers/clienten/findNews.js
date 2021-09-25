@@ -1,6 +1,5 @@
 const News = require("../../models/news");
 const Category = require("../../models/category");
-const Reclame = require("../../models/reclame");
 const Links = require("../../models/links");
 
 const findNews = {
@@ -111,7 +110,7 @@ const findNews = {
             ["name.eng"]: { $gte: 0 },
             createdAt:{$gte: twoday} }).limit(6).sort({seen:-1})
             .select('-description -images -editor -imageInfo -tags -actual')
-            returnres.render('clienten/category', {
+            return res.render('clienten/category', {
             title:'Photo news',
             layout:'./client_layouten', news, best, category,
             links, data:'Барча фотолар'
