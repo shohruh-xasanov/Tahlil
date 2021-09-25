@@ -21,7 +21,7 @@
             <div class="container">
                 <div class="intro__heading">
                     <div class="left__content">
-                        <a class="back__link" href="/en">Бош саҳифа</a>
+                        <a class="back__link" href="/en">Main menu</a>
                         <% if(data) {%>
                             <a class="back__town"><%=data %></a>
                         <% }else if(news[0]) {%>
@@ -29,10 +29,11 @@
                         <% }%>
                     </div>
                     <% if(lastNews) {%>
-                    <a class="rigth__title side__title" >Сўнги хабарлар</a>
+                    <a class="rigth__title side__title" >Latest news
+                    </a>
                     <% }%>
                     <% if(best) {%>
-                        <a class="rigth__title side__title" >Энг кўп ўқилган</a>
+                        <a class="rigth__title side__title" >Popular news</a>
                     <% }%>
                 </div>
                 <div class="intro__inner">
@@ -109,7 +110,7 @@
                             </div>
                             <%if(news.length>21){%>
                             <div class="center__all">
-                                <button id="navToggle" class="center__all_link">Кўпроқ юклаш</button>
+                                <button id="navToggle" class="center__all_link">More news</button>
                                
                             </div>
                             <%}%>
@@ -129,7 +130,7 @@
                         </div>
                         <% }%>
                         <div class="all__side">
-                            <a class="link__side"  href="/en/news/lastnews/24">Кўпроқ</a> 
+                            <a class="link__side"  href="/en/news/lastnews/24">More news</a> 
                         </div>
                         <% }%>
                         <% if(best) {%>
@@ -144,7 +145,7 @@
                             </div>
                             <% }%>
                             <div class="all__side">
-                                <a class="link__side"  href="/en/news/mostseen/24">Кўпроқ</a> 
+                                <a class="link__side"  href="/en/news/mostseen/24">More news</a> 
                             </div>
                             <% }%>
                     </div>

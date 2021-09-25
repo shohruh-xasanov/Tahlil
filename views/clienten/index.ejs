@@ -57,7 +57,7 @@
                         </div> <!-- intro__bottom -->
                     </div> <!-- intro__item -->
                     <div class="intro__sidebar">
-                        <h4 class="side__title title">Энг кўп ўқилган</h4>
+                        <h4 class="side__title title">Popular news</h4>
                         <%if(seen){%>
                         <% for(item of seen) {%>
                             <div class="sidebar__box">
@@ -79,7 +79,7 @@
 
         <section class="news">
             <div class="container">
-                <a class="side__title title title" >Долзарб хабарлар</a>
+                <a class="side__title title title" >Actual news</a>
 
                 <div class="news__inner">
 
@@ -150,8 +150,8 @@
 
                     <div class="video__box news-slider">
                         <div class="heading__items swiper-arrow">
-                            <a class="side__title" >Видео янгиликлар</a>
-                            <a class="video__all" href="/en/news/videos">Барча видеолар</a>
+                            <a class="side__title" >Videos</a>
+                            <a class="video__all" href="/en/news/videos">All</a>
                             <div class="swiper__arrows">
                                 <div class="swiper-arrow-prev"></div>
                                 <div class="swiper-arrow-next"></div>
@@ -223,8 +223,8 @@
 
                     <div class="video__box news-slider">
                         <div class="heading__items swiper-arrow">
-                            <a class="side__title" >Фото янгиликлар</ha>
-                                <a class="video__all photo__all" href="/en/news/photos">Барча фотолар</a>
+                            <a class="side__title" >Photos</ha>
+                                <a class="video__all photo__all" href="/en/news/photos">All</a>
                                 <div class="swiper__arrows">
                                     <div class="swiper-arrow-prev"></div>
                                     <div class="swiper-arrow-next"></div>
@@ -304,7 +304,7 @@
             <div class="container">
                 <div class="street__heading">
                     <h4 class="street__title side__title"><%= newsCat1[0].categoryID.name.eng%></h4>
-                    <a class="video__all" href="/en/news/category/<%= newsCat1[0].categoryID.search%>">Барчаси</a>
+                    <a class="video__all" href="/en/news/category/<%= newsCat1[0].categoryID.search%>">All</a>
                 </div>
                 
                 <div class="street__inner">
@@ -357,7 +357,7 @@
                 <div class="sport__head">
                     <% if(newsCat2[0]) {%>
                     <h4 class="sport__title side__title"><%= newsCat2[0].categoryID.name.eng%></h4>
-                    <a class="video__all" href="/en/news/category/<%= newsCat2[0].categoryID.searchen%>">Барчаси</a>
+                    <a class="video__all" href="/en/news/category/<%= newsCat2[0].categoryID.searchen%>">All</a>
                     <% }%>
                 </div>
 

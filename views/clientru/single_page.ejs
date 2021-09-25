@@ -26,6 +26,13 @@
     line-height: 150%;
     color: #7A7D7B;
     }
+    .company__item{
+        cursor: pointer;
+    }@media (max-width: 726px){
+    .form.search{
+        width: 100px!important;
+    }
+}
 </style>
         <section class="uzb">
             <div class="container">
@@ -53,7 +60,7 @@
                         </div>
                         <% }%>
                     </div>
-                    <a class="uzb__title side__title" >Энг кўп ўқилган</a>
+                    <a class="uzb__title side__title" >Популярное</a>
                 </div>
             </div> <!-- container -->
         </section> <!-- uzb end -->
@@ -215,8 +222,8 @@
                             </form>
                         </div>
                         <div class="telegram__link">
-                            <a class="telegram__page" href="#">
-                                Бизни телеграмда кузатиб боринг
+                            <a class="telegram__page" href="<%= links[0].tg%>">
+                                Следуйте за нами в телеграмме
                             </a>
                         </div>
 
@@ -233,7 +240,7 @@
                         </div>
                         <% }%>
                         <div class="all__side">
-                            <a class="link__side" href="/ru/news/mostseen/24">Кўпроқ</a>
+                            <a class="link__side" href="/ru/news/mostseen/24">Больше новостей</a>
                         </div>
                     </div>
                 </div> <!-- jaxon__inner-->
@@ -242,7 +249,7 @@
 
         <section class="theme">
             <div class="container">
-                <h4 class="theme__title side__title">Мавзуга доир</h4>
+                <h4 class="theme__title side__title">Новости по теме</h4>
                 <div class="theme__content">
                     <% for(item of newsbycategory) {%>
                     <a class="theme__body" href="/ru/news/name/<%=item.search%>">
