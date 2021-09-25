@@ -20,25 +20,25 @@
                         <div class="input__body">
                             <div class="input__name">
                                 <label class="form-label">
-                                    <input name="fullname" class="input__contact" type="text" placeholder="Ф.И.Ш.*">
+                                    <input name="fullname" minlength="7" class="input__contact" type="text" placeholder="Ф.И.Ш.*" required>
                                 </label>
                             </div>
 
                             <div class="input__name input_contact">
                                 <label class="form-label">
-                                    <input name="email" class="input__contact" type="email" placeholder="Эл.почта">
+                                    <input name="email" minlength="7"  class="input__contact" type="email" placeholder="Эл.почта" required>
                                 </label>
                             </div>
                             <div class="input__name input_call">
                                 <label class="form-label">
-                                    <input name="phone" class="input__call" type="tel"  placeholder="Телефон рақам">
+                                    <input name="phone" minlength="7" class="input__call" type="tel"  placeholder="Телефон рақам" required>
 
                                 </label>
                             </div>
                         </div>
                         <span class="web__name">Хабар мазмуни</span>
                         <p>
-                            <textarea name="message" required class="text__area" rows="6"></textarea>
+                            <textarea name="message" minlength="7" required class="text__area" rows="6"></textarea>
                         </p>
                         <div class="send__icon">
                             <input class="send__input" type="submit" name="send" required value="Жўнатиш">

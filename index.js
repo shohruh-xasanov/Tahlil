@@ -77,7 +77,7 @@ app.use(express.static(path.join(__dirname + "/public/client")))
 app.use(express.static(path.join(__dirname + "/public")))
 
 winston.add(new winston.transports.MongoDB({
-    db: 'mongodb://localhost:27017/tahlil',
+    db : 'mongodb+srv://Shohruh:349672@cluster0.pelmz.mongodb.net/tahlil?retryWrites=true&w=majority',
     collection: 'logs',
     options: {
         useUnifiedTopology: true,
