@@ -94,11 +94,10 @@ app.use((req,res,next)=>{
 
 app.use(errorHandler)
 app.use(function (err, req,res,next){
-    console.log(err)
     winston.error(err)
     if(err){
         res.render('client/err',{
-            layout:false, msg:err
+            layout:false, msg:err 
         })
     }
     next()

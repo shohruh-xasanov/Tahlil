@@ -45,6 +45,7 @@ const getMain = {
     .select('-description -images -editor -imageInfo -tags -actual').sort({createdAt:-1}).limit(8).populate('categoryID')
     res.render("clienten/index", {
       layout: "./client_layouten",
+      title:'Tahlil24.uz internet edition',
       seen,
       lastnews,
       actual,
@@ -60,12 +61,14 @@ const getMain = {
   getReclame : async (req,res)=> {
     const links = await Links.find().limit(1).sort({createdAt:-1})
     res.render('clienten/reclame', {
+      title:'Reclame',
       layout:'./client_layouten', links
     })
   },
   getContact : async (req,res)=>{
     const links = await Links.find().limit(1).sort({createdAt:-1})
     res.render('clienten/contact', {
+      title:'Contact us',
       layout:'./client_layouten', links
     })
   },
@@ -73,6 +76,7 @@ const getMain = {
     const links = await Links.find().limit(1).sort({createdAt:-1})
     const about = await About.find().limit(1).sort({createdAt:-1})
     res.render('clienten/about', {
+      title:'About us',
       layout:'./client_layouten', links, about
     }) 
   },

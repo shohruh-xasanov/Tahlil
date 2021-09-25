@@ -15,6 +15,7 @@ const findNews = {
         const lastNews = await News.find({ ["name.ru"]: { $gte: 0 } }).sort({createdAt:-1}).limit(8)
             .select('-description -images -editor -imageInfo -tags -actual')
         res.render('clientru/category', {
+            title:category1.name.ru +' новости',
             layout:'./client_layoutru', news, lastNews, category,links
         })
     },
@@ -35,6 +36,7 @@ const findNews = {
             .limit(4).populate('categoryID').sort({createdAt:-1})
             .select('-description -images -editor -imageInfo -tags -actual')
         res.render('clientru/single_page', {
+            title:news.name.ru,
             layout:'./client_layoutru', news, best, links,
             category, newsbycategory
         })
@@ -52,6 +54,7 @@ const findNews = {
             ["name.ru"]: { $gte: 0 }}).sort({createdAt:-1}).limit(8)
             .select('-description -images -editor -imageInfo -tags -actual')
         res.render('clientru/category', {
+            title:'Популярное',
             layout:'./client_layoutru', news, lastNews, category,
             links, data:'Энг кўп ўқилган'
         })
@@ -66,6 +69,7 @@ const findNews = {
             ["name.ru"]: { $gte: 0 }}).sort({createdAt:-1}).limit(8)
             .select('-description -images -editor -imageInfo -tags -actual')
         res.render('clientru/category', {
+            title:'Последние новости',
             layout:'./client_layoutru', news, lastNews, category,
             links, data:'Сўнги хабарлар'
         })
@@ -80,6 +84,7 @@ const findNews = {
             ["name.ru"]: { $gte: 0 }}).sort({createdAt:-1}).limit(8)
             .select('-description -images -editor -imageInfo -tags -actual')
         res.render('clientru/category', {
+            title:'Видеоновости',
             layout:'./client_layoutru', news, lastNews, category,
             links, data:'Барча видеолар'
         })
@@ -94,6 +99,7 @@ const findNews = {
             ["name.ru"]: { $gte: 0 }}).sort({createdAt:-1}).limit(8)
             .select('-description -images -editor -imageInfo -tags -actual')
         res.render('clientru/category', {
+            title:'Фоторепортажи',
             layout:'./client_layoutru', news, lastNews, category,
             links, data:'Барча фотолар'
         })

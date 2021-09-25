@@ -38,6 +38,7 @@ exports.searchNewsclienten = async(req,res)=>{
     ]).populate('categoryID').limit(9)
     const lastNews = await News.find({['name.eng']:{$gte:0}}).limit(5).sort({createdAt:-1})
     res.render("clienten/searchnews", {
+        title:search,
         layout: "./client_layout", news, lastNews, search,links
     });
 }
@@ -50,6 +51,7 @@ exports.searchNewsclientru = async(req,res)=>{
     ]).populate('categoryID').limit(9)
     const lastNews = await News.find({['name.ru']:{$gte:0}}).limit(5).sort({createdAt:-1})
     res.render("clientru/searchnews", {
+        title:search,
         layout: "./client_layout", news, lastNews, search,links
     });
 }
