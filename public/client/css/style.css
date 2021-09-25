@@ -2036,3 +2036,39 @@ input {
       .nav {
         list-style-type: none;
       }
+      
+@media (max-width: 726px){
+    .col__photos{
+        width: 180px;
+    }
+    .bottom__text{
+        width: 100%;
+    }
+    .col__content{
+        width: 100%;
+    }
+    .col__photo{
+        width: 100%;
+        height: 90px;
+    }
+    .col__photos img{
+        width: 100%;
+    }
+    .news__content{
+        width: 90%;
+    }
+    .box__bottom_content{
+        width: 90%;
+    }
+    .news__photo{
+        width: 180px;
+        height: 90px;
+    }
+}
+
+@media (max-width: 450px){
+    .col__photos img{
+        width: 100%;
+        height: 70%;
+    }
+}
