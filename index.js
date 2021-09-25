@@ -98,7 +98,7 @@ app.use(function (err, req,res,next){
     winston.error(err)
     if(err){
         res.render('client/err',{
-            layout:false
+            layout:false, msg:err
         })
     }
     next()
