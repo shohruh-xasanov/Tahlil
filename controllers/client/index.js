@@ -43,7 +43,7 @@ const getMain = {
     .select('-description -images -editor -imageInfo -tags -actual').sort({createdAt:-1}).limit(6).populate('categoryID')
     const newsCat2 = await News.find({categoryID: id2}).and({ ["name.uz"]: { $gte: 0 } })
     .select('-description -images -editor -imageInfo -tags -actual').sort({createdAt:-1}).limit(8).populate('categoryID')
-    res.render("client/index", {
+    return res.render("client/index", {
       title:'Tahlil24.uz интернет нашри',
       layout: "./client_layout",
       seen,
@@ -60,14 +60,14 @@ const getMain = {
   },
   getReclame : async (req,res)=> {
     const links = await Links.find().limit(1).sort({createdAt:-1})
-    res.render('client/reclame', {
+    return res.render('client/reclame', {
       title:'Реклама',
       layout:'./client_layout', links
     })
   },
   getContact : async (req,res)=>{
     const links = await Links.find().limit(1).sort({createdAt:-1})
-    res.render('client/contact', {
+    return res.render('client/contact', {
       title: 'Алоқа',
       layout:'./client_layout', links
     })
@@ -75,14 +75,14 @@ const getMain = {
   getabout : async (req,res)=>{
     const links = await Links.find().limit(1).sort({createdAt:-1})
     const about = await About.find().limit(1).sort({createdAt:-1})
-    res.render('client/about', {
+    return res.render('client/about', {
       title:'Сайт ҳақида',
       layout:'./client_layout', links, about
     }) 
   },
   changelanguage : async (req,res,next)=>{
     req.session.lang = 'uz'
-    res.redirect('/')
+    return res.redirect('/')
   }
 };
 module.exports = getMain;

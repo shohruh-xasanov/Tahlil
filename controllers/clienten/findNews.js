@@ -14,7 +14,7 @@ const findNews = {
             .select('-description -images -editor -imageInfo -tags -actual')
         const lastNews = await News.find({ ["name.eng"]: { $gte: 0 } }).sort({createdAt:-1}).limit(8)
             .select('-description -images -editor -imageInfo -tags -actual')
-        res.render('clienten/category', {
+            return res.render('clienten/category', {
             title:category1.name.eng +' news',
             layout:'./client_layouten', news, lastNews, category,links
         })
@@ -35,7 +35,7 @@ const findNews = {
         const newsbycategory = await News.find({categoryID:news.categoryID._id}).and({["name.eng"]: { $gte: 0 }})
         .select('-description -images -editor -imageInfo -tags -actual')
             .limit(4).populate('categoryID').sort({createdAt:-1})
-        res.render('clienten/single_page', {
+            return res.render('clienten/single_page', {
             title:news.name.eng,
             layout:'./client_layouten', news, best, links,
             category, newsbycategory
@@ -53,7 +53,7 @@ const findNews = {
         const lastNews = await News.find({ 
             ["name.eng"]: { $gte: 0 }}).sort({createdAt:-1}).limit(8)
             .select('-description -images -editor -imageInfo -tags -actual')
-        res.render('clienten/category', {
+            return res.render('clienten/category', {
             title:'Popular news',
             layout:'./client_layouten', news, lastNews, category,
             links, data:'Энг кўп ўқилган'
@@ -72,7 +72,7 @@ const findNews = {
             ["name.eng"]: { $gte: 0 },
             createdAt:{$gte: twoday} }).limit(6).sort({seen:-1})
             .select('-description -images -editor -imageInfo -tags -actual')
-        res.render('clienten/category', {
+            return res.render('clienten/category', {
             title:'Latest news',
             layout:'./client_layouten', news, best, category,
             links, data:'Сўнги хабарлар'
@@ -92,7 +92,7 @@ const findNews = {
             ["name.eng"]: { $gte: 0 },
             createdAt:{$gte: twoday} }).limit(6).sort({seen:-1})
             .select('-description -images -editor -imageInfo -tags -actual')
-        res.render('clienten/category', {
+            return res.render('clienten/category', {
             title:'Video news',
             layout:'./client_layouten', news, best, category,
             links, data:'Барча видеолар',
@@ -111,7 +111,7 @@ const findNews = {
             ["name.eng"]: { $gte: 0 },
             createdAt:{$gte: twoday} }).limit(6).sort({seen:-1})
             .select('-description -images -editor -imageInfo -tags -actual')
-        res.render('clienten/category', {
+            returnres.render('clienten/category', {
             title:'Photo news',
             layout:'./client_layouten', news, best, category,
             links, data:'Барча фотолар'

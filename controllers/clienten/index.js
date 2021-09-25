@@ -43,7 +43,7 @@ const getMain = {
     .select('-description -images -editor -imageInfo -tags -actual').sort({createdAt:-1}).limit(6).populate('categoryID')
     const newsCat2 = await News.find({categoryID: id2}).and({ ["name.eng"]: { $gte: 0 } })
     .select('-description -images -editor -imageInfo -tags -actual').sort({createdAt:-1}).limit(8).populate('categoryID')
-    res.render("clienten/index", {
+    return res.render("clienten/index", {
       layout: "./client_layouten",
       title:'Tahlil24.uz internet edition',
       seen,
@@ -60,14 +60,14 @@ const getMain = {
   },
   getReclame : async (req,res)=> {
     const links = await Links.find().limit(1).sort({createdAt:-1})
-    res.render('clienten/reclame', {
+    return res.render('clienten/reclame', {
       title:'Reclame',
       layout:'./client_layouten', links
     })
   },
   getContact : async (req,res)=>{
     const links = await Links.find().limit(1).sort({createdAt:-1})
-    res.render('clienten/contact', {
+    return res.render('clienten/contact', {
       title:'Contact us',
       layout:'./client_layouten', links
     })
@@ -75,14 +75,14 @@ const getMain = {
   getabout : async (req,res)=>{
     const links = await Links.find().limit(1).sort({createdAt:-1})
     const about = await About.find().limit(1).sort({createdAt:-1})
-    res.render('clienten/about', {
+    return res.render('clienten/about', {
       title:'About us',
       layout:'./client_layouten', links, about
     }) 
   },
   changelanguage : async (req,res,next)=>{
     req.session.lang = 'en'
-    res.redirect('/en')
+    return res.redirect('/en')
   }
 };
 module.exports = getMain;

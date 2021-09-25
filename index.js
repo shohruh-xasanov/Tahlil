@@ -13,8 +13,7 @@ const ejs = require('ejs')
 const methodOverride = require('method-override')
 const app = express()
 const compression = require('compression')
-const apicache = require('apicache');
-let cache = apicache.middleware;
+const helmet = require('helmet')
 const errorHandler = require('./middleware/error')
 const winston = require('winston')
 require('winston-mongodb')
@@ -45,6 +44,7 @@ app.use(methodOverride('_method',{
 app.use(compression())
 app.use(cookieParser())
 app.use(cors())
+app.use(helmet())
 app.use(layout)
 app.set('view engine', 'ejs')
 app.set('views', './views')
@@ -91,7 +91,6 @@ app.use((req,res,next)=>{
     })
     next()
 })
-
 app.use(errorHandler)
 app.use(function (err, req,res,next){
     winston.error(err)
