@@ -73,7 +73,9 @@
                     <div class="jaxon__content">
                         <div class="jaxon__head">
                             <h4 class="jaxon__title"><%= news.name.uz%></h4>
+                            <%if(news.title.uz){%>
                             <p class="jaxon__info"><%= news.title.uz%></p>
+                            <% }%>
                         </div>
                         <%if(news.videoLink) {%>  
                         <div class="jaxon__video">

@@ -25,18 +25,15 @@ const newsSchema = new mongoose.Schema({
         {
             type:String, 
             trim:true,
-            minlength:10,
         },
         ru:{
             type:String, 
             trim:true,
-            minlength:10,
         },
         eng:
         {
             type:String, 
             trim:true,
-            minlength:10,
     }
     },
     description :{
