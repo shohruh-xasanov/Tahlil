@@ -94,93 +94,13 @@
                         
                         <%if(news.description.ru) {%>
                             <%-news.description.ru%>
-                        <% }%>
-                        <%if(news.images[0]) {%>
-                        <div class="jaxon__video">
-                            <div class="jaxon__photo">
-                                <img src="<%= news.images[0].url%>" alt="jaxon__img" class="jaxon__images">
-                            </div>
-                        </div>
-                        <% }%>
-                        <%if(news.description.ru1.length > 2) {%>
-                            <%-news.description.ru1%>
-                        <% }%>
-                        <%if(news.images[1]) {%>
-                        <div class="jaxon__video">
-                            <div class="jaxon__photo">
-                                <img src="<%= news.images[0].url%>" alt="jaxon__img" class="jaxon__images">
-                            </div>
-                        </div>
-                        <% }%>
-                        <%if(news.description.ru2.length > 2) {%>
-                            <%-news.description.ru2%>
-                        <% }%>
-                        <%if(news.images[2]) {%>
-                        <div class="jaxon__video">
-                            <div class="jaxon__photo">
-                                <img src="<%= news.images[2].url%>" alt="jaxon__img" class="jaxon__images">
-                            </div>
-                        </div>
-                        <% }%>
-                        <%if(news.description.ru3.length > 2) {%>
-                            <%-news.description.ru3%>
-                        <% }%>
-                        <%if(news.images[3]) {%>
-                        <div class="jaxon__video">
-                            <div class="jaxon__photo">
-                                <img src="<%= news.images[3].url%>" alt="jaxon__img" class="jaxon__images">
-                            </div>
-                        </div>
-                        <% }%>
-                        <%if(news.description.ru4.length > 2) {%>
-                            <%-news.description.ru4%>
-                        <% }%>
-                        <%if(news.images[4]) {%>
-                        <div class="jaxon__video">
-                            <div class="jaxon__photo">
-                                <img src="<%= news.images[4].url%>" alt="jaxon__img" class="jaxon__images">
-                            </div>
-                        </div>
-                        <% }%>
-                        <%if(news.description.ru5.length > 2) {%>
-                            <%-news.description.ru5%>
-                        <% }%>
-                        <%if(news.images[5]) {%>
-                        <div class="jaxon__video">
-                            <div class="jaxon__photo">
-                                <img src="<%= news.images[5].url%>" alt="jaxon__img" class="jaxon__images">
-                            </div>
-                        </div>
-                        <% }%>
-                        <%if(news.images[6]) {%>
+                        <% }%><%for(item of news.images){%>
                             <div class="jaxon__video">
                                 <div class="jaxon__photo">
-                                    <img src="<%= news.images[6].url%>" alt="jaxon__img" class="jaxon__images">
+                                    <img src="<%= item.url%>" alt="jaxon__img" class="jaxon__images">
                                 </div>
                             </div>
-                            <% }%>
-                          <%if(news.images[7]) {%>
-                        <div class="jaxon__video">
-                            <div class="jaxon__photo">
-                                <img src="<%= news.images[7].url%>" alt="jaxon__img" class="jaxon__images">
-                            </div>
-                        </div>
-                        <% }%>
-                        <%if(news.images[8]) {%>
-                            <div class="jaxon__video">
-                                <div class="jaxon__photo">
-                                    <img src="<%= news.images[8].url%>" alt="jaxon__img" class="jaxon__images">
-                                </div>
-                            </div>
-                        <% }%>
-                        <%if(news.images[9]) {%>
-                            <div class="jaxon__video">
-                                <div class="jaxon__photo">
-                                    <img src="<%= news.images[9].url%>" alt="jaxon__img" class="jaxon__images">
-                                </div>
-                            </div>
-                        <% }%>
-                       
+                            <%}%>
                         <%if(news.editor){%>
                             <div class="bottom__border">
                                 <p class="jaxon__text text"> <br>
