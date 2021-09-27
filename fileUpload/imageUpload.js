@@ -36,7 +36,7 @@ const store= multer.diskStorage({
 
 var  upload = multer ({
     storage: store,
-    limits : {fileSize: 1024 * 1024 * 10}
+    limits : {fieldSize: 25 * 1024 * 1024}
 })
 
 module.exports= upload

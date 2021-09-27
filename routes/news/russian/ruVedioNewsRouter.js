@@ -13,8 +13,7 @@ router.route("/create/videonews/ru")
     .post(roles,upload.fields([
         {name:'poster',
         maxCount:1}, 
-        {name:'images',
-        maxCount:10}]), createNewsRu)
+        {name:'images'}]), createNewsRu)
     .get(roles,createNewsPageRu)
 
 router.route('/videonews/ru/:id')
@@ -22,8 +21,7 @@ router.route('/videonews/ru/:id')
     .put(roles,upload.fields([
       {name:'poster',
       maxCount:1}, 
-      {name:'images',
-      maxCount:10}]),updateNews)
+      {name:'images'}]),updateNews)
 
 router.get("/videonews/ru", roles,allNewsRu);
 
