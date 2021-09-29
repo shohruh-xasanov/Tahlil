@@ -94,7 +94,8 @@
                         
                         <%if(news.description.ru) {%>
                             <%-news.description.ru%>
-                        <% }%><%for(item of news.images){%>
+                        <% }%>
+                        <%for(item of news.images){%>
                             <div class="jaxon__video">
                                 <div class="jaxon__photo">
                                     <img src="<%= item.url%>" alt="jaxon__img" class="jaxon__images">
